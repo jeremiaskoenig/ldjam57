@@ -1,0 +1,19 @@
+{
+    "name": "Delphin",
+    "name_sci": "Delphinus",
+    "coordinates": [
+        { "id": "A", "x": 345, "y": 340, "size": "m" },
+        { "id": "B", "x": 436, "y": 355, "size": "s" },
+        { "id": "C", "x": 385, "y": 397, "size": "s" },
+        { "id": "D", "x": 463, "y": 423, "size": "m" },
+        { "id": "E", "x": 492, "y": 419, "size": "s" },
+		{ "id": "F", "x": 518, "y": 602, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "A", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "B", "to": "D" },
+		{ "from": "D", "to": "F" }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Haare der Berenike",
+    "name_sci": "Coma Berenices",
+    "coordinates": [
+        { "id": "A", "x": 185, "y": 853, "size": "s" },
+        { "id": "B", "x": 205, "y": 323, "size": "s" },
+        { "id": "C", "x": 716, "y": 324, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" }
+    ]
+}

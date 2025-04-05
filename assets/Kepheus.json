@@ -1,0 +1,21 @@
+{
+    "name": "Kepheus",
+    "name_sci": "Cepheus",
+    "coordinates": [
+        { "id": "A", "x": 429, "y": 356, "size": "s" },
+        { "id": "B", "x": 686, "y": 515, "size": "l" },
+        { "id": "C", "x": 796, "y": 705, "size": "m" },
+        { "id": "D", "x": 662, "y": 869, "size": "m" },
+        { "id": "E", "x": 593, "y": 878, "size": "m" },
+		{ "id": "F", "x": 514, "y": 671, "size": "s" },
+		{ "id": "G", "x": 895, "y": 675, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "C", "to": "G" }
+    ]
+}

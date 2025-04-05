@@ -1,0 +1,15 @@
+{
+    "name": "Grabstichel",
+    "name_sci": "Caelum",
+    "coordinates": [
+        { "id": "A", "x": 454, "y": 427, "size": "s" },
+        { "id": "B", "x": 658, "y": 498, "size": "s" },
+        { "id": "C", "x": 668, "y": 712, "size": "s" },
+        { "id": "D", "x": 742, "y": 852, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" }
+    ]
+}

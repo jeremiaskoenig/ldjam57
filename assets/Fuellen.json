@@ -1,0 +1,13 @@
+{
+    "name": "Füllen",
+    "name_sci": "Equuleus",
+    "coordinates": [
+        { "id": "A", "x": 458, "y": 720, "size": "l" },
+        { "id": "B", "x": 475, "y": 459, "size": "m" },
+        { "id": "C", "x": 533, "y": 454, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" }
+    ]
+}

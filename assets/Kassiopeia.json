@@ -1,0 +1,17 @@
+{
+    "name": "Kassiopeia",
+    "name_sci": "Cassiopeia",
+    "coordinates": [
+        { "id": "A", "x": 288, "y": 437, "size": "m" },
+        { "id": "B", "x": 366, "y": 576, "size": "m" },
+        { "id": "C", "x": 484, "y": 500, "size": "m" },
+        { "id": "D", "x": 544, "y": 722, "size": "m" },
+        { "id": "E", "x": 678, "y": 633, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" }
+    ]
+}
