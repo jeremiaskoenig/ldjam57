@@ -1,0 +1,14 @@
+{
+    "name": "Die Fette Mutter",
+    "name_sci": "Deine Mutter Majoris",
+    "coordinates": [
+        { "id": "A", "x": 0.5, "y": -0.7, "size": "S" },
+        { "id": "B", "x": -1.5, "y": 3.7, "size": "S" },
+        { "id": "C", "x": -1.5, "y": 3.7, "size": "L" },
+        { "id": "D", "x": -1.5, "y": 3.7, "size": "M" },
+        { "id": "E", "x": -1.5, "y": 3.7, "size": "L" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" }
+    ]
+}
