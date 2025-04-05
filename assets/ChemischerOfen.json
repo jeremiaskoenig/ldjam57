@@ -1,0 +1,13 @@
+{
+    "name": "Chemischer Ofen",
+    "name_sci": "Fornax",
+    "coordinates": [
+        { "id": "A", "x": 226, "y": 485, "size": "l" },
+        { "id": "B", "x": 404, "y": 600, "size": "s" },
+        { "id": "C", "x": 747, "y": 500, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" }
+    ]
+}

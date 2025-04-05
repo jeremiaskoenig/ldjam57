@@ -1,0 +1,23 @@
+{
+    "name": "Hase",
+    "name_sci": "Lepus",
+    "coordinates": [
+        { "id": "A", "x": 212, "y": 341, "size": "s" },
+        { "id": "B", "x": 322, "y": 370, "size": "s" },
+        { "id": "C", "x": 489, "y": 511, "size": "m" },
+        { "id": "D", "x": 719, "y": 442, "size": "s" },
+        { "id": "E", "x": 533, "y": 659, "size": "m" },
+		{ "id": "F", "x": 792, "y": 737, "size": "s" },
+		{ "id": "G", "x": 354, "y": 793, "size": "m" },
+		{ "id": "H", "x": 276, "y": 771, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "C", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "E", "to": "G" },
+		{ "from": "G", "to": "H" }
+    ]
+}

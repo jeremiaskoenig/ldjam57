@@ -1,0 +1,22 @@
+{
+    "name": "Fährmann",
+    "name_sci": "Auriga",
+    "coordinates": [
+        { "id": "A", "x": 845, "y": 939, "size": "s" },
+        { "id": "B", "x": 462, "y": 713, "size": "l" },
+        { "id": "C", "x": 270, "y": 474, "size": "m" },
+        { "id": "D", "x": 283, "y": 259, "size": "m" },
+        { "id": "E", "x": 492, "y": 233, "size": "l" },
+		{ "id": "F", "x": 571, "y": 288, "size": "s" },
+		{ "id": "G", "x": 627, "y": 577, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "B" },
+    ]
+}

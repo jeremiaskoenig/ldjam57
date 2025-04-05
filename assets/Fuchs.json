@@ -1,0 +1,17 @@
+{
+    "name": "Fuchs",
+    "name_sci": "Vulpecula",
+    "coordinates": [
+        { "id": "A", "x": 295, "y": 399, "size": "s" },
+        { "id": "B", "x": 410, "y": 402, "size": "s" },
+        { "id": "C", "x": 475, "y": 533, "size": "s" },
+        { "id": "D", "x": 677, "y": 501, "size": "s" },
+        { "id": "E", "x": 789, "y": 608, "size": "s" },
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+    ]
+}

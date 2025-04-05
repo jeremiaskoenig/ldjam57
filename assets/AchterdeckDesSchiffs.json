@@ -1,0 +1,25 @@
+{
+    "name": "Achterdeck des Schiffs",
+    "name_sci": "Puppis",
+    "coordinates": [
+        { "id": "A", "x": 172, "y": 93, "size": "m" },
+        { "id": "B", "x": 241, "y": 45, "size": "s" },
+        { "id": "C", "x": 292, "y": 104, "size": "s" },
+        { "id": "D", "x": 364, "y": 162, "size": "s" },
+        { "id": "E", "x": 493, "y": 480, "size": "m" },
+		{ "id": "F", "x": 692, "y": 688, "size": "s" },
+		{ "id": "G", "x": 600, "y": 905, "size": "s" },
+		{ "id": "H", "x": 420, "y": 665, "size": "s" },
+		{ "id": "I", "x": 226, "y": 572, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" }
+    ]
+}

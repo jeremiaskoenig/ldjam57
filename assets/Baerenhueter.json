@@ -1,0 +1,22 @@
+{
+    "name": "Bärenhüter",
+    "name_sci": "Bootes",
+    "coordinates": [
+        { "id": "A", "x": 323, "y": 146, "size": "s" },
+        { "id": "B", "x": 527, "y": 222, "size": "m" },
+        { "id": "C", "x": 537, "y": 504, "size": "s" },
+        { "id": "D", "x": 685, "y": 901, "size": "l" },
+        { "id": "E", "x": 434, "y": 625, "size": "m" },
+		{ "id": "F", "x": 210, "y": 390, "size": "s" },
+		{ "id": "G", "x": 866, "y": 915, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "A", "to": "F" },
+		{ "from": "D", "to": "G" }
+    ]
+}

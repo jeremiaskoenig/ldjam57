@@ -1,0 +1,31 @@
+{
+    "name": "Adler",
+    "name_sci": "Aquila",
+    "coordinates": [
+        { "id": "A", "x": 333, "y": 415, "size": "s" },
+        { "id": "B", "x": 368, "y": 344, "size": "l" },
+        { "id": "C", "x": 400, "y": 293, "size": "m" },
+        { "id": "D", "x": 550, "y": 510, "size": "m" },
+        { "id": "E", "x": 690, "y": 740, "size": "m" },
+		{ "id": "F", "x": 720, "y": 760, "size": "s" },
+		{ "id": "G", "x": 690, "y": 198, "size": "m" },
+		{ "id": "H", "x": 731, "y": 165, "size": "s" },
+		{ "id": "I", "x": 355, "y": 565, "size": "s" },
+		{ "id": "J", "x": 220, "y": 620, "size": "s" },
+		{ "id": "K", "x": 467, "y": 635, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "E", "to": "G" },
+		{ "from": "D", "to": "G" },
+		{ "from": "G", "to": "F" },
+		{ "from": "D", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "E" },
+    ]
+}

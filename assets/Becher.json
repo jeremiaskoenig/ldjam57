@@ -1,0 +1,23 @@
+{
+    "name": "Becher",
+    "name_sci": "Crater",
+    "coordinates": [
+        { "id": "A", "x": 411, "y": 256, "size": "s" },
+        { "id": "B", "x": 506, "y": 295, "size": "s" },
+        { "id": "C", "x": 546, "y": 417, "size": "m" },
+        { "id": "D", "x": 693, "y": 532, "size": "m" },
+        { "id": "E", "x": 265, "y": 495, "size": "m" },
+		{ "id": "F", "x": 352, "y": 531, "size": "s" },
+		{ "id": "G", "x": 502, "y": 508, "size": "m" },
+		{ "id": "H", "x": 600, "y": 673, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "C", "to": "G" }
+    ]
+}
