@@ -64,6 +64,18 @@ public partial class GameStateController : Node
     [Export]
     public Node3D PanelCredits { get; set; }
 
+    [Export]
+    public MainMenuButton ButtonLoseBack { get; set; }
+ 
+    [Export]
+    public Node3D PanelLose { get; set; }
+
+    [Export]
+    public MainMenuButton ButtonWinBack { get; set; }
+ 
+    [Export]
+    public Node3D PanelWin { get; set; }
+
     public string CurrentHoverText { get; set; }
 
     public string GameStage { get; set; } = "menu";
@@ -76,7 +88,7 @@ public partial class GameStateController : Node
         {
             GameStage = "game";
             constellationQueue.Clear();
-            foreach (var resource in Constellations)
+            foreach (var resource in Constellations.Take(3))
             {
                 var result = BuildConstellation(resource);
                 if (result != null)
@@ -88,6 +100,8 @@ public partial class GameStateController : Node
         ButtonCredits.ButtonClicked += () => GameStage = "credits";
         ButtonQuit.ButtonClicked += () => GetTree().Quit();
         ButtonCreditsBack.ButtonClicked += () => GameStage = "menu";
+        ButtonLoseBack.ButtonClicked += () => GameStage = "menu";
+        ButtonWinBack.ButtonClicked += () => GameStage = "menu";
     }
 
     private Constellation BuildConstellation(Resource from)
@@ -108,6 +122,8 @@ public partial class GameStateController : Node
     {
         PanelMenu.Visible = GameStage == "menu";
         PanelCredits.Visible = GameStage == "credits";
+        PanelLose.Visible = GameStage == "end_lose";
+        PanelWin.Visible = GameStage == "end_win";
 
         if (GameStage == "game")
         {
@@ -137,14 +153,12 @@ public partial class GameStateController : Node
                 }
                 else
                 {
-                    //TODO: You won!
-                    GD.Print("You won!");
+                    GameStage = "end_win";
                 }
             }
             else if (DetectionProgress >= 1 && TransitionTimer <= 0)
             {
-                //TODO: You lost!
-                GD.Print("You lost!");
+                GameStage = "end_lose";
             }
         }
         else if (GameStage == "menu")
@@ -158,6 +172,20 @@ public partial class GameStateController : Node
         else if (GameStage == "credits")
         {
             CurrentHoverText = ButtonCreditsBack.CurrentHoverText ?? "";
+        }
+        else if (GameStage == "end_win")
+        {
+            //TODO: Show highscore
+            //      > How do we want to count highscore?
+            //        just track time spent in the game?
+            //        Message could be "You escaped the Glorpixians in ### seconds!"
+            //      > Do we bother reseting the game?
+            //        we'd need a reset for "lose" anyway, so it makes sense
+        }
+        else if (GameStage == "end_lose")
+        {
+            //TODO: Show lose screen
+            //      > Do we show any animation? Anything getting blown up?
         }
     }
 

@@ -175,6 +175,7 @@ transform = Transform3D(0.6, 0, 0, 0, 7.86805e-08, 0.6, 0, -0.6, 7.86805e-08, 0,
 
 [node name="MenuBackground" type="MeshInstance3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
+visible = false
 mesh = SubResource("PlaneMesh_hjbl2")
 skeleton = NodePath("")
 
@@ -301,6 +302,98 @@ outline_size = 8
 [node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Cockpit/CreditsBackground/ButtonBack"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/CreditsBackground/ButtonBack/StaticBody3D"]
+shape = SubResource("BoxShape3D_0hx0s")
+
+[node name="LoseScreenBackground" type="MeshInstance3D" parent="Camera3D/Cockpit"]
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
+visible = false
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+
+[node name="LoseTitle" type="Label3D" parent="Camera3D/Cockpit/LoseScreenBackground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.666)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "You lost!"
+font_size = 48
+outline_size = 8
+
+[node name="LoseDescription" type="Label3D" parent="Camera3D/Cockpit/LoseScreenBackground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.111)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "The Glorpixians caught
+you and put you back
+to work in the glorf mines
+on Glorxus VII"
+font_size = 24
+outline_size = 8
+
+[node name="ButtonBack" type="MeshInstance3D" parent="Camera3D/Cockpit/LoseScreenBackground"]
+transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+script = ExtResource("3_1jk0n")
+Stage = "end_lose"
+HoverText = "Back to main menu"
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/LoseScreenBackground/ButtonBack"]
+transform = Transform3D(1.24224, 0, 0, 0, -4.37114e-08, 1, 0, -5, -2.18557e-07, 0, 0, 0)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "◄ Back ►"
+font_size = 24
+outline_size = 8
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Cockpit/LoseScreenBackground/ButtonBack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/LoseScreenBackground/ButtonBack/StaticBody3D"]
+shape = SubResource("BoxShape3D_0hx0s")
+
+[node name="WinScreenBackground" type="MeshInstance3D" parent="Camera3D/Cockpit"]
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
+visible = false
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+
+[node name="WinTitle" type="Label3D" parent="Camera3D/Cockpit/WinScreenBackground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.666)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "You win!"
+font_size = 48
+outline_size = 8
+
+[node name="WinDescription" type="Label3D" parent="Camera3D/Cockpit/WinScreenBackground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.111)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "You managed to throw the
+Glorpixians off your trail!
+You managed to escape
+in ### seconds!"
+font_size = 24
+outline_size = 8
+
+[node name="ButtonBack" type="MeshInstance3D" parent="Camera3D/Cockpit/WinScreenBackground"]
+transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+script = ExtResource("3_1jk0n")
+Stage = "end_win"
+HoverText = "Back to main menu"
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/WinScreenBackground/ButtonBack"]
+transform = Transform3D(1.24224, 0, 0, 0, -4.37114e-08, 1, 0, -5, -2.18557e-07, 0, 0, 0)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "◄ Back ►"
+font_size = 24
+outline_size = 8
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Cockpit/WinScreenBackground/ButtonBack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/WinScreenBackground/ButtonBack/StaticBody3D"]
 shape = SubResource("BoxShape3D_0hx0s")
 
 [node name="Projector 1" type="MeshInstance3D" parent="Camera3D/Cockpit"]
@@ -471,7 +564,7 @@ GameState = NodePath("../GameStateController")
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits")]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
 ResourceData = ExtResource("12_usoy6")
@@ -491,3 +584,7 @@ ButtonQuit = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonQuit")
 PanelMenu = NodePath("../Camera3D/Cockpit/MenuBackground")
 ButtonCreditsBack = NodePath("../Camera3D/Cockpit/CreditsBackground/ButtonBack")
 PanelCredits = NodePath("../Camera3D/Cockpit/CreditsBackground")
+ButtonLoseBack = NodePath("../Camera3D/Cockpit/LoseScreenBackground/ButtonBack")
+PanelLose = NodePath("../Camera3D/Cockpit/LoseScreenBackground")
+ButtonWinBack = NodePath("../Camera3D/Cockpit/WinScreenBackground/ButtonBack")
+PanelWin = NodePath("../Camera3D/Cockpit/WinScreenBackground")
