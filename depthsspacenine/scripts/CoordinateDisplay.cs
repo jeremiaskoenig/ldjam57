@@ -9,12 +9,22 @@ public partial class CoordinateDisplay : Label3D
 
     public override void _Process(double delta)
     {
-        offset += (float)delta;
-
-        if (offset > 0.2f) 
+        if (GameState.GameStage == "game")
         {
-            UpdateText();
-            offset = 0;
+            offset += (float)delta;
+            if (offset > 0.2f) 
+            {
+                UpdateText();
+                offset = 0;
+            }
+        }
+        else if (GameState.GameStage == "menu")
+        {
+            Text = "\n    " + GameState.CurrentHoverText;
+        }
+        else if (GameState.GameStage == "credits")
+        {
+            Text = "\n    " + GameState.CurrentHoverText;
         }
     }
 
@@ -31,7 +41,14 @@ public partial class CoordinateDisplay : Label3D
         {
             if (GameState.TransitionTimer > 2)
             {
-                text = $"Target system acquired!\n\nTarget: {GameState.CurrentConstellation.Name}";
+                if (GameState.CurrentConstellation == null)
+                {
+                    text = "Jumping into the game!";
+                }
+                else
+                {
+                    text = $"Target system acquired!\n\nTarget: {GameState.CurrentConstellation?.Name}";
+                }
             }
             else
             {

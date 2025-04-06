@@ -45,40 +45,88 @@ public partial class GameStateController : Node
     public Constellation CurrentConstellation { get; set; }
 
     public CameraController CameraController { get; set; }
+ 
+    [Export]
+    public MainMenuButton ButtonPlay { get; set; }
+ 
+    [Export]
+    public MainMenuButton ButtonCredits { get; set; }
+ 
+    [Export]
+    public MainMenuButton ButtonQuit { get; set; }
+
+    [Export]
+    public Node3D PanelMenu { get; set; }
+
+    [Export]
+    public MainMenuButton ButtonCreditsBack { get; set; }
+ 
+    [Export]
+    public Node3D PanelCredits { get; set; }
+
+    public string CurrentHoverText { get; set; }
+
+    public string GameStage { get; set; } = "menu";
+
+    public override void _Ready()
+    {
+        ButtonPlay.ButtonClicked += () => GameStage = "game";
+        ButtonCredits.ButtonClicked += () => GameStage = "credits";
+        ButtonQuit.ButtonClicked += () => GetTree().Quit();
+        ButtonCreditsBack.ButtonClicked += () => GameStage = "menu";
+    }
 
     public override void _Process(double delta)
     {
-        DetectionProgress += (float)(delta * 0.1f);
-        if (TransitionTimer > 0)
+        PanelMenu.Visible = GameStage == "menu";
+        PanelCredits.Visible = GameStage == "credits";
+
+        if (GameStage == "game")
         {
-            TargetLayer.Visible = TransitionTimer > 2;
-            TransitionTimer -= (float)delta;
-            if (TransitionTimer < 0)
+            DetectionProgress += (float)(delta * 0.1f);
+            if (TransitionTimer > 0)
             {
-                CurrentConstellation = null;
+                TargetLayer.Visible = TransitionTimer > 2;
+                TransitionTimer -= (float)delta;
+                if (TransitionTimer < 0)
+                {
+                    CurrentConstellation = null;
+                }
+            }
+            else
+            {
+                TargetLayer.Visible = true;
+            }
+
+            if (RequireNewMap && Constellations.Length > 0)
+            {
+                var nextConstellation = Constellations[GD.Randi() % Constellations.Length];
+                var dataFile = FileAccess.Open(nextConstellation.ResourcePath, FileAccess.ModeFlags.Read);
+                var result = Json.ParseString(dataFile.GetAsText());
+                
+                var dict = result.AsGodotDictionary();
+
+                if (dict != null)
+                {
+                    CurrentConstellation = LoadConstellation(dict);
+                    ApplyConstellation(CurrentConstellation);
+                    GD.Print($"Updated constellation, new constellation: {CurrentConstellation.Name} @ {CurrentLevelAngle}°");
+                    DetectionProgress = 0;
+                }
             }
         }
-        else
+        else if (GameStage == "menu")
         {
-            TargetLayer.Visible = true;
+            string hoverText = null;
+            hoverText = ButtonPlay.CurrentHoverText ?? hoverText;
+            hoverText = ButtonCredits.CurrentHoverText ?? hoverText;
+            hoverText = ButtonQuit.CurrentHoverText ?? hoverText;
+            CurrentHoverText = hoverText ?? "";
         }
-
-        if (RequireNewMap && Constellations.Length > 0)
+        else if (GameStage == "credits")
         {
-            var nextConstellation = Constellations[GD.Randi() % Constellations.Length];
-            var dataFile = FileAccess.Open(nextConstellation.ResourcePath, FileAccess.ModeFlags.Read);
-            var result = Json.ParseString(dataFile.GetAsText());
-            
-            var dict = result.AsGodotDictionary();
-
-            if (dict != null)
-            {
-                CurrentConstellation = LoadConstellation(dict);
-                ApplyConstellation(CurrentConstellation);
-                GD.Print($"Updated constellation, new constellation: {CurrentConstellation.Name} @ {CurrentLevelAngle}°");
-                DetectionProgress = 0;
-            }
-        }    
+            CurrentHoverText = ButtonCreditsBack.CurrentHoverText ?? "";
+        }
     }
 
     private void ApplyLine(Line line)
@@ -213,7 +261,6 @@ public partial class GameStateController : Node
 
         CurrentLevelAngle = FindNewAngle();
         StarLayer.RotationDegrees = new Vector3(0, 0, CurrentLevelAngle);
-        //StarLayer.RotateZ(Mathf.DegToRad(CurrentLevelAngle));
     }
 
     private float FindNewAngle()

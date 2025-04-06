@@ -13,7 +13,18 @@ public partial class DetectionDisplay : Label3D
 
     public override void _Process(double delta)
     {
-        UpdateText();
+        if (GameState.GameStage == "game")
+        {
+            UpdateText();
+        }
+        else if (GameState.GameStage == "menu")
+        {
+            Text = "\n    Main Menu";
+        }
+        else if (GameState.GameStage == "credits")
+        {
+            Text = "\n    Credits";
+        }
     }
 
     private void UpdateText()
