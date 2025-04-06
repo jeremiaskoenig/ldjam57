@@ -1,0 +1,22 @@
+{
+    "name": "Großer Hund",
+    "name_sci": "Canis Major",
+    "coordinates": [
+        { "id": "A", "x": 116, "y": 711, "size": "m" },
+        { "id": "B", "x": 242, "y": 584, "size": "m" },
+        { "id": "C", "x": 281, "y": 483, "size": "s" },
+        { "id": "D", "x": 436, "y": 196, "size": "l" },
+        { "id": "E", "x": 647, "y": 244, "size": "m" },
+		{ "id": "F", "x": 302, "y": 642, "size": "s" },
+		{ "id": "G", "x": 332, "y": 680, "size": "m" },
+		{ "id": "H", "x": 662, "y": 719, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "B", "to": "F" },
+		{ "from": "G", "to": "H" }
+    ]
+}

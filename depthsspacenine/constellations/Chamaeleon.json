@@ -1,0 +1,24 @@
+{
+    "name": "Chamäleon",
+    "name_sci": "Chamaeleon",
+    "coordinates": [
+        { "id": "A", "x": 333, "y": 415, "size": "s" },
+        { "id": "B", "x": 368, "y": 344, "size": "l" },
+        { "id": "C", "x": 400, "y": 293, "size": "m" },
+        { "id": "D", "x": 550, "y": 510, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "E", "to": "G" },
+		{ "from": "D", "to": "G" },
+		{ "from": "G", "to": "F" },
+		{ "from": "D", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "E" },
+    ]
+}

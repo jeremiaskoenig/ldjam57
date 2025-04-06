@@ -18,13 +18,29 @@ public partial class DetectionDisplay : Label3D
 
     private void UpdateText()
     {
-        var progressArrows = (int)(GameState.DetectionProgress * 23);
-        string progress = String.Empty.PadRight(progressArrows, '>');
-        if (progress.All(c => c == '>') && progress.Length > 23)
-            progress = progress.Substring(0, 23);
+        string text;
+        if (GameState.TransitionTimer > 0)
+        {
+            if (GameState.TransitionTimer > 2)
+            {
+                text = $"Jump initiated!\n\nJump in {(GameState.TransitionTimer - 2):0.00}s";
+            }
+            else
+            {
+                text = "";
+            }
+        }
         else
-            progress = progress.PadRight(progress.Length + ((23 - progressArrows) * 2), ' ');
-        string text = $"Glorpixian Detection Probe\n\n[{progress}]";
+        {
+            var progressArrows = (int)(GameState.DetectionProgress * 23);
+            string progress = String.Empty.PadRight(progressArrows, '>');
+            if (progress.All(c => c == '>') && progress.Length > 23)
+                progress = progress.Substring(0, 23);
+            else
+                progress = progress.PadRight(progress.Length + ((23 - progressArrows) * 2), ' ');
+            text = $"Glorpixian Detection Probe\n\n[{progress}]";
+        }
+
         Text = text;
     }
 }

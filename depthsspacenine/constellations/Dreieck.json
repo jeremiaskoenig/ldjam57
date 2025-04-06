@@ -1,0 +1,14 @@
+{
+    "name": "Dreieck",
+    "name_sci": "Triangulum",
+    "coordinates": [
+        { "id": "A", "x": 551, "y": 435, "size": "s" },
+        { "id": "B", "x": 628, "y": 380, "size": "m" },
+        { "id": "C", "x": 800, "y": 634, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "A" }
+    ]
+}

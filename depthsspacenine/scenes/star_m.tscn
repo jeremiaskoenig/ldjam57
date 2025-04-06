@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c05lced7c1fdj"]
+
+[ext_resource type="Texture2D" uid="uid://ckje2228dvgj3" path="res://textures/star_m.png" id="1_hsbdj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjg32"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_hsbdj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qxlj0"]
+material = SubResource("StandardMaterial3D_kjg32")
+
+[node name="StarM" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("QuadMesh_qxlj0")

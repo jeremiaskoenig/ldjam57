@@ -1,0 +1,14 @@
+{
+    "name": "Bildhauer",
+    "name_sci": "Sculptor",
+    "coordinates": [
+        { "id": "A", "x": 371, "y": 612, "size": "m" },
+        { "id": "B", "x": 405, "y": 510, "size": "m" },
+        { "id": "C", "x": 800, "y": 580, "size": "m" },
+        { "id": "D", "x": 773, "y": 600, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" }
+    ]
+}

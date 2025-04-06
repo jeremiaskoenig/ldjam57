@@ -1,0 +1,22 @@
+{
+    "name": "Großer Bär",
+    "name_sci": "Ursa Major",
+    "coordinates": [
+        { "id": "A", "x": 120, "y": 578, "size": "l" },
+        { "id": "B", "x": 247, "y": 500, "size": "m" },
+        { "id": "C", "x": 346, "y": 510, "size": "m" },
+        { "id": "D", "x": 468, "y": 514, "size": "s" },
+        { "id": "E", "x": 676, "y": 415, "size": "l" },
+		{ "id": "F", "x": 695, "y": 532, "size": "m" },
+		{ "id": "G", "x": 527, "y": 595, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "D" }
+    ]
+}

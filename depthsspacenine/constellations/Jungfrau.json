@@ -1,0 +1,26 @@
+{
+    "name": "Jungfrau",
+    "name_sci": "Virgo",
+    "coordinates": [
+        { "id": "A", "x": 79, "y": 568, "size": "m" },
+        { "id": "B", "x": 260, "y": 705, "size": "s" },
+        { "id": "C", "x": 152, "y": 864, "size": "l" },
+        { "id": "D", "x": 316, "y": 242, "size": "l" },
+        { "id": "E", "x": 362, "y": 454, "size": "m" },
+		{ "id": "F", "x": 461, "y": 592, "size": "l" },
+		{ "id": "G", "x": 616, "y": 570, "size": "s" },
+		{ "id": "H", "x": 824, "y": 497, "size": "s" },
+		{ "id": "I", "x": 853, "y": 360, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "B", "to": "F" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" }
+    ]
+}

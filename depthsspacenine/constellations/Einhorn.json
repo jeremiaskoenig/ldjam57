@@ -1,0 +1,16 @@
+{
+    "name": "Einhorn",
+    "name_sci": "Monoceros",
+    "coordinates": [
+        { "id": "A", "x": 119, "y": 808, "size": "m" },
+        { "id": "B", "x": 373, "y": 404, "size": "m" },
+        { "id": "C", "x": 757, "y": 701, "size": "m" },
+        { "id": "D", "x": 881, "y": 673, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" }
+    ]
+}

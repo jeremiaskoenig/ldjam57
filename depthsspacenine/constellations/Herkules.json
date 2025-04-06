@@ -1,0 +1,36 @@
+{
+    "name": "Herkules",
+    "name_sci": "Hercules",
+    "coordinates": [
+        { "id": "A", "x": 235, "y": 382, "size": "s" },
+        { "id": "B", "x": 396, "y": 387, "size": "s" },
+        { "id": "C", "x": 441, "y": 393, "size": "m" },
+        { "id": "D", "x": 591, "y": 327, "size": "s" },
+        { "id": "E", "x": 620, "y": 235, "size": "s" },
+		{ "id": "F", "x": 666, "y": 128, "size": "s" },
+		{ "id": "G", "x": 162, "y": 586, "size": "m" },
+		{ "id": "H", "x": 216, "y": 578, "size": "s" },
+		{ "id": "I", "x": 277, "y": 618, "size": "s" },
+		{ "id": "J", "x": 451, "y": 689, "size": "m" },
+		{ "id": "K", "x": 524, "y": 535, "size": "s" },
+		{ "id": "L", "x": 622, "y": 507, "size": "m" },
+		{ "id": "M", "x": 712, "y": 749, "size": "m" },
+		{ "id": "N", "x": 770, "y": 795, "size": "s" }		
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "C", "to": "K" },
+		{ "from": "D", "to": "L" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "L" },
+		{ "from": "L", "to": "M" },
+		{ "from": "M", "to": "N" }
+    ]
+}

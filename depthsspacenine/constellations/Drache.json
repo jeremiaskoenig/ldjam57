@@ -1,0 +1,36 @@
+{
+    "name": "Drache",
+    "name_sci": "Draco",
+    "coordinates": [
+        { "id": "A", "x": 292, "y": 754, "size": "s" },
+        { "id": "B", "x": 282, "y": 818, "size": "m" },
+        { "id": "C", "x": 190, "y": 808, "size": "l" },
+        { "id": "D", "x": 238, "y": 700, "size": "s" },
+        { "id": "E", "x": 173, "y": 394, "size": "m" },
+		{ "id": "F", "x": 161, "y": 307, "size": "s" },
+		{ "id": "G", "x": 313, "y": 353, "size": "s" },
+		{ "id": "H", "x": 401, "y": 542, "size": "s" },
+		{ "id": "I", "x": 503, "y": 639, "size": "m" },
+		{ "id": "J", "x": 568, "y": 699, "size": "s" },
+		{ "id": "K", "x": 670, "y": 673, "size": "s" },
+		{ "id": "L", "x": 809, "y": 477, "size": "s" },
+		{ "id": "M", "x": 866, "y": 254, "size": "s" },
+		{ "id": "N", "x": 927, "y": 150, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "A" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "L" },
+		{ "from": "L", "to": "M" },
+		{ "from": "M", "to": "N" }
+    ]
+}

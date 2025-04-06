@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=70 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
@@ -11,6 +11,41 @@
 [ext_resource type="Script" path="res://scripts/ScanlineDisplay.cs" id="7_328rh"]
 [ext_resource type="Script" path="res://scripts/DetectionDisplay.cs" id="9_6if5a"]
 [ext_resource type="Script" path="res://scripts/GameStateController.cs" id="10_lhk55"]
+[ext_resource type="Script" path="res://scripts/WarpDisplay.cs" id="11_2jtmv"]
+[ext_resource type="JSON" path="res://constellations/Altar.json" id="12_usoy6"]
+[ext_resource type="PackedScene" uid="uid://ctovcg34y77nb" path="res://scenes/star_s.tscn" id="13_888ss"]
+[ext_resource type="JSON" path="res://constellations/AchterdeckDesSchiffs.json" id="13_ft3kp"]
+[ext_resource type="JSON" path="res://constellations/Adler.json" id="14_686se"]
+[ext_resource type="PackedScene" uid="uid://c05lced7c1fdj" path="res://scenes/star_m.tscn" id="14_ni60d"]
+[ext_resource type="JSON" path="res://constellations/Baerenhueter.json" id="15_68im5"]
+[ext_resource type="PackedScene" uid="uid://b0xhmbp6v7fbe" path="res://scenes/star_l.tscn" id="15_kotdf"]
+[ext_resource type="JSON" path="res://constellations/Becher.json" id="16_u0uck"]
+[ext_resource type="JSON" path="res://constellations/Bildhauer.json" id="17_2nrgs"]
+[ext_resource type="JSON" path="res://constellations/Chamaeleon.json" id="18_vkq7a"]
+[ext_resource type="JSON" path="res://constellations/ChemischerOfen.json" id="19_4wqfb"]
+[ext_resource type="JSON" path="res://constellations/Delphin.json" id="20_djyqc"]
+[ext_resource type="JSON" path="res://constellations/Drache.json" id="21_bfnny"]
+[ext_resource type="JSON" path="res://constellations/Dreieck.json" id="22_241j8"]
+[ext_resource type="JSON" path="res://constellations/Eidechse.json" id="23_g1m8o"]
+[ext_resource type="JSON" path="res://constellations/Einhorn.json" id="24_bealu"]
+[ext_resource type="JSON" path="res://constellations/Eridanus.json" id="25_kob33"]
+[ext_resource type="JSON" path="res://constellations/Faehrmann.json" id="26_ycf4q"]
+[ext_resource type="JSON" path="res://constellations/Fische.json" id="27_tu8f0"]
+[ext_resource type="JSON" path="res://constellations/Fliege.json" id="28_fheb2"]
+[ext_resource type="JSON" path="res://constellations/FliegenderFisch.json" id="29_g2vyf"]
+[ext_resource type="JSON" path="res://constellations/Fuchs.json" id="30_likcx"]
+[ext_resource type="JSON" path="res://constellations/Fuellen.json" id="31_h5m6h"]
+[ext_resource type="JSON" path="res://constellations/Grabstichel.json" id="32_l0fy7"]
+[ext_resource type="JSON" path="res://constellations/GroßerBaer.json" id="33_7loss"]
+[ext_resource type="JSON" path="res://constellations/GroßerHund.json" id="34_2ntpj"]
+[ext_resource type="JSON" path="res://constellations/HaareDerBerenike.json" id="35_omeek"]
+[ext_resource type="JSON" path="res://constellations/Hase.json" id="36_dmil5"]
+[ext_resource type="JSON" path="res://constellations/Herkules.json" id="37_s3iqa"]
+[ext_resource type="JSON" path="res://constellations/Jungfrau.json" id="38_fr5ul"]
+[ext_resource type="JSON" path="res://constellations/Kassiopeia.json" id="39_1lrow"]
+[ext_resource type="JSON" path="res://constellations/Kepheus.json" id="40_5kc1x"]
+[ext_resource type="JSON" path="res://constellations/KielDesSchiffs.json" id="41_1dv4p"]
+[ext_resource type="Texture2D" uid="uid://wrgu4jldyg14" path="res://textures/star_s.png" id="46_2uew0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jov13"]
 albedo_color = Color(0.597176, 0.597176, 0.597176, 1)
@@ -24,13 +59,6 @@ albedo_color = Color(0.627451, 0.745098, 1, 0.00784314)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hjbl2"]
 material = SubResource("StandardMaterial3D_edba4")
-
-[sub_resource type="Curve3D" id="Curve3D_wua75"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.395, 0, -0.525, 0, 0, 0, 0, 0, 0, 0.655, 0, 0.085),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3co5"]
 transparency = 1
@@ -48,7 +76,7 @@ roughness = 0.3
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vwck"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.121569, 0.443137, 1, 0.0313726)
+albedo_color = Color(0.121569, 0.85098, 1, 0.0313726)
 albedo_texture = ExtResource("5_rnm8k")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ia2ag"]
@@ -56,7 +84,7 @@ albedo_texture = ExtResource("5_rnm8k")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bfr4"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.121569, 0.443137, 1, 0.0313726)
+albedo_color = Color(0.121569, 0.85098, 1, 0.0313726)
 albedo_texture = ExtResource("5_rnm8k")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_16vqc"]
@@ -64,7 +92,7 @@ albedo_texture = ExtResource("5_rnm8k")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1m8d"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.121569, 0.443137, 1, 0.0313726)
+albedo_color = Color(0.121569, 0.85098, 1, 0.0313726)
 albedo_texture = ExtResource("5_rnm8k")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1k7gk"]
@@ -72,7 +100,7 @@ albedo_texture = ExtResource("5_rnm8k")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3c75"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0.121569, 0.443137, 1, 0.0313726)
+albedo_color = Color(0.121569, 0.85098, 1, 0.0313726)
 albedo_texture = ExtResource("5_rnm8k")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_065p0"]
@@ -85,6 +113,18 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="QuadMesh" id="QuadMesh_cutle"]
 material = SubResource("StandardMaterial3D_065p0")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct8t4"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("46_2uew0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cqmxn"]
+material = SubResource("StandardMaterial3D_ct8t4")
+
+[sub_resource type="Curve" id="Curve_ldqvi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.258427, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxako"]
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
@@ -92,40 +132,38 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_mevso"]
 material = SubResource("StandardMaterial3D_dxako")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fq7n"]
+shading_mode = 0
+albedo_color = Color(0, 0.20487, 0.416248, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uij5p"]
+material = SubResource("StandardMaterial3D_4fq7n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl5kt"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 0.12549)
+
 [node name="MainScene" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("GameState")]
 fov = 37.5
 script = ExtResource("1_qbsww")
+GameState = NodePath("../GameStateController")
 
 [node name="Cockpit" type="MeshInstance3D" parent="Camera3D"]
 mesh = ExtResource("1_asbjk")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_jov13")
 
+[node name="TargetLayer" type="Node3D" parent="Camera3D/Cockpit"]
+transform = Transform3D(0.6, 0, 0, 0, 7.86805e-08, 0.6, 0, -0.6, 7.86805e-08, 0, 0, -2.6)
+
 [node name="TargetPreview" type="MeshInstance3D" parent="Camera3D/Cockpit"]
-transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, -0.15, -2.6)
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
+visible = false
 mesh = SubResource("PlaneMesh_hjbl2")
 skeleton = NodePath("../../../Backdrop")
-
-[node name="Path3D" type="Path3D" parent="Camera3D/Cockpit/TargetPreview"]
-visible = false
-curve = SubResource("Curve3D_wua75")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Camera3D/Cockpit/TargetPreview"]
-visible = false
-snap = 0.01
-polygon = PackedVector2Array(-0.01, -0.01, -0.01, 0.01, 0.01, 0.01, 0.01, -0.01)
-mode = 2
-path_node = NodePath("../Path3D")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 1
-path_local = true
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
 
 [node name="Projector 1" type="MeshInstance3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.0109799, 0.0235466, -0.015, -0.0271892, 0.0126785, 0, 0.00633927, 0.0135946, 0.0259808, -0.75, 0.12, -2.24)
@@ -224,7 +262,7 @@ transform = Transform3D(1, -3.91155e-08, 4.47035e-08, -3.1665e-08, 0.999999, 0, 
 [node name="DisplayRight" type="Node3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.0934571, 0.00159102, -0.285067, 0.0748282, 0.289339, 0.0261467, 0.275075, -0.0792488, 0.0897391, 0.538061, -0.275295, -1.66233)
 
-[node name="CoordinateLabel" type="Label3D" parent="Camera3D/Cockpit/DisplayRight"]
+[node name="CoordinateLabel" type="Label3D" parent="Camera3D/Cockpit/DisplayRight" node_paths=PackedStringArray("GameState")]
 transform = Transform3D(1, 1.49012e-08, 0, 1.49012e-08, 1, 7.45058e-09, 0, 0, 1, 0, 0, 0)
 modulate = Color(1, 0.501961, 0.12549, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -235,6 +273,7 @@ font_size = 24
 horizontal_alignment = 0
 vertical_alignment = 0
 script = ExtResource("6_m2bkh")
+GameState = NodePath("../../../../GameStateController")
 
 [node name="ScanlineDisplay" type="MeshInstance3D" parent="Camera3D/Cockpit/DisplayRight"]
 transform = Transform3D(1.76, 0, 0, 0, 0.525, 0, 0, 0, 1, 0.825, -0.265, -0.005)
@@ -264,15 +303,47 @@ mesh = SubResource("QuadMesh_cutle")
 script = ExtResource("7_328rh")
 DisplayMaterial = SubResource("StandardMaterial3D_065p0")
 
+[node name="Starfield" type="CPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+amount = 20
+lifetime = 2.0
+mesh = SubResource("QuadMesh_cqmxn")
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, 0, 3)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 0.01
+scale_amount_max = 0.02
+scale_amount_curve = SubResource("Curve_ldqvi")
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.89417, -0.236623, -0.380092, 0.067067, -0.768569, 0.636242, -0.442676, -0.5944, -0.671361, -4.84631, 2, -0.734503)
+transform = Transform3D(0.89417, -0.236623, -0.380092, 0.067067, -0.768569, 0.636242, -0.442676, -0.5944, -0.671361, -4.7994, 2.01321, -0.739324)
 
 [node name="Backdrop" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, -6)
 mesh = SubResource("PlaneMesh_mevso")
 
+[node name="WarpLayer" type="MeshInstance3D" parent="." node_paths=PackedStringArray("GameState")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -3)
+visible = false
+mesh = SubResource("PlaneMesh_uij5p")
+script = ExtResource("11_2jtmv")
+GameState = NodePath("../GameStateController")
+
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="."]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
+ResourceData = ExtResource("12_usoy6")
+Constellations = Array[Resource]([ExtResource("13_ft3kp"), ExtResource("14_686se"), ExtResource("12_usoy6"), ExtResource("15_68im5"), ExtResource("16_u0uck"), ExtResource("17_2nrgs"), ExtResource("18_vkq7a"), ExtResource("19_4wqfb"), ExtResource("20_djyqc"), ExtResource("21_bfnny"), ExtResource("22_241j8"), ExtResource("23_g1m8o"), ExtResource("24_bealu"), ExtResource("25_kob33"), ExtResource("26_ycf4q"), ExtResource("27_tu8f0"), ExtResource("28_fheb2"), ExtResource("29_g2vyf"), ExtResource("30_likcx"), ExtResource("31_h5m6h"), ExtResource("32_l0fy7"), ExtResource("33_7loss"), ExtResource("34_2ntpj"), ExtResource("35_omeek"), ExtResource("36_dmil5"), ExtResource("37_s3iqa"), ExtResource("38_fr5ul"), ExtResource("39_1lrow"), ExtResource("40_5kc1x"), ExtResource("41_1dv4p")])
+StarLayer = NodePath("../StarLayer")
+TargetLayer = NodePath("../Camera3D/Cockpit/TargetLayer")
+TargetDisplayMaterial = SubResource("StandardMaterial3D_wl5kt")
+StarSmall = ExtResource("13_888ss")
+StarMedium = ExtResource("14_ni60d")
+StarLarge = ExtResource("15_kotdf")
+ConstellationScalingBackground = 1.5
+ConstellationScalingTarget = 1.3
+AngleTolerance = 3.0

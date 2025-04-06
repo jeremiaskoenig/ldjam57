@@ -1,0 +1,19 @@
+{
+    "name": "Fliege",
+    "name_sci": "Musca",
+    "coordinates": [
+        { "id": "A", "x": 435, "y": 415, "size": "l" },
+        { "id": "B", "x": 382, "y": 591, "size": "m" },
+        { "id": "C", "x": 498, "y": 616, "size": "m" },
+        { "id": "D", "x": 479, "y": 466, "size": "l" },
+        { "id": "E", "x": 570, "y": 410, "size": "m" },
+		{ "id": "F", "x": 731, "y": 373, "size": "l" },
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" }
+    ]
+}

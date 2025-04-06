@@ -1,0 +1,26 @@
+{
+    "name": "Kiel des Schiffs",
+    "name_sci": "Carina",
+    "coordinates": [
+        { "id": "A", "x": 963, "y": 308, "size": "l" },
+        { "id": "B", "x": 475, "y": 371, "size": "m" },
+        { "id": "C", "x": 282, "y": 379, "size": "m" },
+        { "id": "D", "x": 110, "y": 520, "size": "s" },
+        { "id": "E", "x": 69, "y": 552, "size": "s" },
+		{ "id": "F", "x": 74, "y": 636, "size": "m" },
+		{ "id": "G", "x": 217, "y": 739, "size": "m" },
+		{ "id": "H", "x": 351, "y": 689, "size": "s" },
+		{ "id": "I", "x": 235, "y": 584, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "G" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "C" }
+    ]
+}
