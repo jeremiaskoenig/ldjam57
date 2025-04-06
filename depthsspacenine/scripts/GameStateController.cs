@@ -44,6 +44,8 @@ public partial class GameStateController : Node
     public bool RequireNewMap => CurrentConstellation == null && TransitionTimer <= 0;
     public Constellation CurrentConstellation { get; set; }
 
+    public CameraController CameraController { get; set; }
+
     public override void _Process(double delta)
     {
         DetectionProgress += (float)(delta * 0.1f);
@@ -209,10 +211,23 @@ public partial class GameStateController : Node
             ApplyLine(lineData);
         }
 
-        CurrentLevelAngle = GD.RandRange(0, 360);
+        CurrentLevelAngle = FindNewAngle();
         StarLayer.RotationDegrees = new Vector3(0, 0, CurrentLevelAngle);
         //StarLayer.RotateZ(Mathf.DegToRad(CurrentLevelAngle));
     }
+
+    private float FindNewAngle()
+    {
+        var current = CameraController.CurrentAngle;
+        current += 360;
+        current %= 360;
+        float result;
+        do {
+            result = GD.RandRange(0, 360);
+        } while (IsInTolerance(current, result, 15));
+        return result;
+    }
+
 
     private Constellation LoadConstellation(Dictionary dict)
     {
@@ -255,11 +270,16 @@ public partial class GameStateController : Node
 
     public bool IsCloseEnough(float angle)
     {
-        angle += 360;
-        angle %= 360;
-        var upperBound = angle + AngleTolerance;
-        var lowerBound = angle - AngleTolerance;
-        return CurrentLevelAngle >= lowerBound && CurrentLevelAngle <= upperBound;
+        return IsInTolerance(angle, CurrentLevelAngle, AngleTolerance);
+    }
+
+    private bool IsInTolerance(float first, float second, float tolerance)
+    {
+        first += 360;
+        first %= 360;
+        var upperBound = first + tolerance;
+        var lowerBound = first - tolerance;
+        return second >= lowerBound && second <= upperBound;
     }
 
 

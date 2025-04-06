@@ -5,6 +5,13 @@ public partial class CameraController : Camera3D
     [Export]
     public GameStateController GameState { get; set; }
 
+    public float CurrentAngle => RotationDegrees.Z;
+
+    public override void _Ready()
+    {
+        GameState.CameraController = this;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (GameState.TransitionTimer > 0)
@@ -28,7 +35,7 @@ public partial class CameraController : Camera3D
             return;
 
         inputCooldown -= (float)delta;
-        if (inputCooldown <= 0 && GameState.IsCloseEnough(RotationDegrees.Z))
+        if (inputCooldown <= 0 && GameState.IsCloseEnough(CurrentAngle))
         {
             GameState.TransitionTimer = 5;
         }
