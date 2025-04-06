@@ -5,6 +5,9 @@ public partial class CameraController : Camera3D
     [Export]
     public GameStateController GameState { get; set; }
 
+    [Export]
+    public Curve WarpWobble { get; set; }
+
     public float CurrentAngle => RotationDegrees.Z;
 
     public override void _Ready()
@@ -38,7 +41,17 @@ public partial class CameraController : Camera3D
     public override void _Process(double delta)
     {
         if (GameState.TransitionTimer > 0)
+        {
+            if (GameState.TransitionTimer < 0.4)
+            {
+                var t = GameState.TransitionTimer / 0.4f;
+                var value = WarpWobble.Sample(t);
+
+                this.Fov = 37.5f * value;
+            }
+
             return;
+        }
 
         inputCooldown -= (float)delta;
         if (inputCooldown <= 0 && GameState.IsCloseEnough(CurrentAngle))

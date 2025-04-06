@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=71 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
@@ -46,6 +46,12 @@
 [ext_resource type="JSON" path="res://constellations/Kepheus.json" id="40_5kc1x"]
 [ext_resource type="JSON" path="res://constellations/KielDesSchiffs.json" id="41_1dv4p"]
 [ext_resource type="Texture2D" uid="uid://wrgu4jldyg14" path="res://textures/star_s.png" id="46_2uew0"]
+
+[sub_resource type="Curve" id="Curve_sm8it"]
+min_value = 0.25
+max_value = 1.25
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.278947, 1.10714), 0.0, 0.0, 0, 0, Vector2(0.547368, 0.524725), 0.0, 0.0, 0, 0, Vector2(0.652632, 1.07418), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jov13"]
 albedo_color = Color(0.597176, 0.597176, 0.597176, 1)
@@ -150,6 +156,7 @@ albedo_color = Color(0, 1, 1, 0.12549)
 fov = 37.5
 script = ExtResource("1_qbsww")
 GameState = NodePath("../GameStateController")
+WarpWobble = SubResource("Curve_sm8it")
 
 [node name="Cockpit" type="MeshInstance3D" parent="Camera3D"]
 mesh = ExtResource("1_asbjk")
