@@ -1,0 +1,19 @@
+{
+    "name": "Orion",
+    "name_sci": "Orion",
+    "coordinates": [
+        { "id": "A", "x": 358, "y": 281, "size": "l" },
+        { "id": "B", "x": 460, "y": 549, "size": "m" },
+        { "id": "C", "x": 410, "y": 771, "size": "s" },
+        { "id": "D", "x": 491, "y": 525, "size": "m" },
+        { "id": "E", "x": 570, "y": 311, "size": "s" },
+		{ "id": "F", "x": 523, "y": 500, "size": "m" },
+		{ "id": "G", "x": 647, "y": 727, "size": "l" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" }
+    ]
+}

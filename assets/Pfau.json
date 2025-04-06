@@ -1,0 +1,31 @@
+{
+    "name": "Pfau",
+    "name_sci": "Pavo",
+    "coordinates": [
+        { "id": "A", "x": 353, "y": 380, "size": "l" },
+        { "id": "B", "x": 271, "y": 596, "size": "s" },
+        { "id": "C", "x": 355, "y": 577, "size": "m" },
+        { "id": "D", "x": 431, "y": 562, "size": "m" },
+		{ "id": "E", "x": 600, "y": 480, "size": "s" },
+		{ "id": "F", "x": 672, "y": 479, "size": "m" },
+		{ "id": "G", "x": 575, "y": 575, "size": "s" },
+		{ "id": "H", "x": 691, "y": 533, "size": "s" },
+		{ "id": "I", "x": 731, "y": 572, "size": "m" },
+		{ "id": "J", "x": 461, "y": 695, "size": "s" },
+		{ "id": "K", "x": 587, "y": 668, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "A", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "D", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "F", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "D", "to": "J" },
+		{ "from": "D", "to": "K" },
+    ]
+}

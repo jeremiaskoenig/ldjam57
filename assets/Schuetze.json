@@ -1,0 +1,31 @@
+{
+    "name": "Schütze",
+    "name_sci": "Sagittarius",
+    "coordinates": [
+        { "id": "A", "x": 295, "y": 308, "size": "s" },
+        { "id": "B", "x": 233, "y": 336, "size": "s" },
+        { "id": "C", "x": 325, "y": 501, "size": "l" },
+        { "id": "D", "x": 230, "y": 557, "size": "s" },
+        { "id": "E", "x": 269, "y": 638, "size": "m" },
+		{ "id": "F", "x": 404, "y": 523, "size": "s" },
+		{ "id": "G", "x": 552, "y": 463, "size": "m" },
+		{ "id": "H", "x": 677, "y": 301, "size": "s" },
+		{ "id": "I", "x": 608, "y": 628, "size": "m" },
+		{ "id": "J", "x": 580, "y": 798, "size": "l" },
+		{ "id": "K", "x": 628, "y": 888, "size": "s" },
+		{ "id": "L", "x": 730, "y": 654, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "C", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "G", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "I", "to": "L" }
+    ]
+}

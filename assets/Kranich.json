@@ -1,0 +1,22 @@
+{
+    "name": "Kranich",
+    "name_sci": "Grus",
+    "coordinates": [
+        { "id": "A", "x": 359, "y": 865, "size": "m" },
+        { "id": "B", "x": 392, "y": 682, "size": "l" },
+        { "id": "C", "x": 482, "y": 552, "size": "m" },
+        { "id": "D", "x": 487, "y": 559, "size": "m" },
+        { "id": "E", "x": 593, "y": 455, "size": "s" },
+		{ "id": "F", "x": 671, "y": 385, "size": "s" },
+		{ "id": "G", "x": 776, "y": 305, "size": "m" },
+		{ "id": "H", "x": 634, "y": 689, "size": "l" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "C", "to": "H" }
+    ]
+}

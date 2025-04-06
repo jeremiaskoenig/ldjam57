@@ -1,0 +1,22 @@
+{
+    "name": "Kleiner Bär",
+    "name_sci": "Ursa Minor",
+    "coordinates": [
+        { "id": "A", "x": 548, "y": 50, "size": "s" },
+        { "id": "B", "x": 467, "y": 185, "size": "l" },
+        { "id": "C", "x": 412, "y": 361, "size": "m" },
+        { "id": "D", "x": 458, "y": 552, "size": "m" },
+        { "id": "E", "x": 576, "y": 700, "size": "m" },
+		{ "id": "F", "x": 486, "y": 795, "size": "s" },
+		{ "id": "G", "x": 366, "y": 610, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "F", "to": "D" }
+    ]
+}

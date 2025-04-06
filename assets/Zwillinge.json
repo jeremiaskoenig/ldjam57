@@ -1,0 +1,23 @@
+{
+    "name": "Zwillinge",
+    "name_sci": "Gemini",
+    "coordinates": [
+        { "id": "A", "x": 695, "y": 733, "size": "m" },
+        { "id": "B", "x": 481, "y": 596, "size": "s" },
+        { "id": "C", "x": 356, "y": 546, "size": "s" },
+        { "id": "D", "x": 176, "y": 330, "size": "l" },
+        { "id": "E", "x": 264, "y": 206, "size": "l" },
+		{ "id": "F", "x": 637, "y": 441, "size": "m" },
+		{ "id": "G", "x": 803, "y": 521, "size": "m" },
+		{ "id": "H", "x": 865, "y": 517, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" }
+    ]
+}

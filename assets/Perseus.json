@@ -1,0 +1,19 @@
+{
+    "name": "Perseus",
+    "name_sci": "Perseus",
+    "coordinates": [
+        { "id": "A", "x": 628, "y": 315, "size": "m" },
+        { "id": "B", "x": 554, "y": 421, "size": "l" },
+        { "id": "C", "x": 467, "y": 483, "size": "m" },
+        { "id": "D", "x": 382, "y": 696, "size": "m" },
+        { "id": "E", "x": 391, "y": 922, "size": "m" },
+		{ "id": "F", "x": 646, "y": 665, "size": "m" },
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "B", "to": "F" }
+    ]
+}
