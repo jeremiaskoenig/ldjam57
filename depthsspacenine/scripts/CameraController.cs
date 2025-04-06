@@ -17,13 +17,19 @@ public partial class CameraController : Camera3D
         if (GameState.TransitionTimer > 0)
             return;
 
+        var speed = 1f;
+        if (Input.IsKeyPressed(Key.Shift))
+        {
+            speed *= 2;
+        }
+
         if (Input.IsKeyPressed(Key.Q))
         {
-            RotateZ(Mathf.DegToRad(-2));
+            RotateZ(Mathf.DegToRad(-speed));
         }
         else if (Input.IsKeyPressed(Key.E))
         {
-            RotateZ(Mathf.DegToRad(2));
+            RotateZ(Mathf.DegToRad(speed));
         }
     }
 
