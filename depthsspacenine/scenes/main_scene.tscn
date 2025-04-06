@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=74 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/WarpDisplay.cs" id="11_2jtmv"]
 [ext_resource type="JSON" path="res://constellations/Altar.json" id="12_usoy6"]
 [ext_resource type="PackedScene" uid="uid://ctovcg34y77nb" path="res://scenes/star_s.tscn" id="13_888ss"]
+[ext_resource type="Texture2D" uid="uid://c2ev2mjxahr7c" path="res://textures/nebula.png" id="13_b0cjq"]
 [ext_resource type="JSON" path="res://constellations/AchterdeckDesSchiffs.json" id="13_ft3kp"]
 [ext_resource type="JSON" path="res://constellations/Adler.json" id="14_686se"]
 [ext_resource type="PackedScene" uid="uid://c05lced7c1fdj" path="res://scenes/star_m.tscn" id="14_ni60d"]
@@ -135,12 +136,14 @@ material = SubResource("StandardMaterial3D_ct8t4")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.258427, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxako"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1ese"]
 shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("13_b0cjq")
+uv1_scale = Vector3(2, 2, 2)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mevso"]
-material = SubResource("StandardMaterial3D_dxako")
+[sub_resource type="QuadMesh" id="QuadMesh_sisxw"]
+material = SubResource("StandardMaterial3D_u1ese")
+size = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fq7n"]
 shading_mode = 0
@@ -173,12 +176,12 @@ transform = Transform3D(0.6, 0, 0, 0, 7.86805e-08, 0.6, 0, -0.6, 7.86805e-08, 0,
 [node name="MenuBackground" type="MeshInstance3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
 mesh = SubResource("PlaneMesh_hjbl2")
-skeleton = NodePath("../../../Backdrop")
+skeleton = NodePath("")
 
 [node name="ButtonPlay" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
 transform = Transform3D(0.805, 0, 0, 0, 1, 7.10543e-16, 0, -3.55271e-15, 0.2, 0, 0, -0.55)
 mesh = SubResource("PlaneMesh_hjbl2")
-skeleton = NodePath("../../../../Backdrop")
+skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
 Stage = "menu"
 HoverText = "Get in the game"
@@ -199,7 +202,7 @@ shape = SubResource("BoxShape3D_0hx0s")
 [node name="ButtonCredits" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
 transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0)
 mesh = SubResource("PlaneMesh_hjbl2")
-skeleton = NodePath("../../../../Backdrop")
+skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
 Stage = "menu"
 HoverText = "Who did what?"
@@ -220,7 +223,7 @@ shape = SubResource("BoxShape3D_0hx0s")
 [node name="ButtonQuit" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
 transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
 mesh = SubResource("PlaneMesh_hjbl2")
-skeleton = NodePath("../../../../Backdrop")
+skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
 Stage = "menu"
 HoverText = "Quit the game"
@@ -242,7 +245,7 @@ shape = SubResource("BoxShape3D_0hx0s")
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
 visible = false
 mesh = SubResource("PlaneMesh_hjbl2")
-skeleton = NodePath("../../../Backdrop")
+skeleton = NodePath("")
 
 [node name="CreditsTitle" type="Label3D" parent="Camera3D/Cockpit/CreditsBackground"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.813071)
@@ -282,7 +285,7 @@ vertical_alignment = 0
 [node name="ButtonBack" type="MeshInstance3D" parent="Camera3D/Cockpit/CreditsBackground"]
 transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
 mesh = SubResource("PlaneMesh_hjbl2")
-skeleton = NodePath("../../../../Backdrop")
+skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
 Stage = "credits"
 HoverText = "Back to main menu"
@@ -455,8 +458,8 @@ scale_amount_curve = SubResource("Curve_ldqvi")
 transform = Transform3D(0.89417, -0.236623, -0.380092, 0.067067, -0.768569, 0.636242, -0.442676, -0.5944, -0.671361, -4.7994, 2.01321, -0.739324)
 
 [node name="Backdrop" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 0, -6)
-mesh = SubResource("PlaneMesh_mevso")
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, -27.5)
+mesh = SubResource("QuadMesh_sisxw")
 
 [node name="WarpLayer" type="MeshInstance3D" parent="." node_paths=PackedStringArray("GameState")]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -3)

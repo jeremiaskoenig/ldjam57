@@ -68,12 +68,40 @@ public partial class GameStateController : Node
 
     public string GameStage { get; set; } = "menu";
 
+    private readonly Queue<Constellation> constellationQueue = new Queue<Constellation>();
+
     public override void _Ready()
     {
-        ButtonPlay.ButtonClicked += () => GameStage = "game";
+        ButtonPlay.ButtonClicked += () => 
+        {
+            GameStage = "game";
+            constellationQueue.Clear();
+            foreach (var resource in Constellations)
+            {
+                var result = BuildConstellation(resource);
+                if (result != null)
+                {
+                    constellationQueue.Enqueue(result);
+                }
+            }
+        };
         ButtonCredits.ButtonClicked += () => GameStage = "credits";
         ButtonQuit.ButtonClicked += () => GetTree().Quit();
         ButtonCreditsBack.ButtonClicked += () => GameStage = "menu";
+    }
+
+    private Constellation BuildConstellation(Resource from)
+    {
+        var dataFile = FileAccess.Open(from.ResourcePath, FileAccess.ModeFlags.Read);
+        var result = Json.ParseString(dataFile.GetAsText());
+        
+        var dict = result.AsGodotDictionary();
+
+        if (dict != null)
+        {
+            return LoadConstellation(dict);
+        }
+        return null;
     }
 
     public override void _Process(double delta)
@@ -98,21 +126,25 @@ public partial class GameStateController : Node
                 TargetLayer.Visible = true;
             }
 
-            if (RequireNewMap && Constellations.Length > 0)
+            if (RequireNewMap)
             {
-                var nextConstellation = Constellations[GD.Randi() % Constellations.Length];
-                var dataFile = FileAccess.Open(nextConstellation.ResourcePath, FileAccess.ModeFlags.Read);
-                var result = Json.ParseString(dataFile.GetAsText());
-                
-                var dict = result.AsGodotDictionary();
-
-                if (dict != null)
+                if (constellationQueue.Count > 0)
                 {
-                    CurrentConstellation = LoadConstellation(dict);
+                    CurrentConstellation = constellationQueue.Dequeue();
                     ApplyConstellation(CurrentConstellation);
                     GD.Print($"Updated constellation, new constellation: {CurrentConstellation.Name} @ {CurrentLevelAngle}°");
                     DetectionProgress = 0;
                 }
+                else
+                {
+                    //TODO: You won!
+                    GD.Print("You won!");
+                }
+            }
+            else if (DetectionProgress >= 1 && TransitionTimer <= 0)
+            {
+                //TODO: You lost!
+                GD.Print("You lost!");
             }
         }
         else if (GameStage == "menu")
@@ -305,11 +337,18 @@ public partial class GameStateController : Node
         foreach (var line in linesArray)
         {
             var lineData = line.AsGodotDictionary();
-            lines.Add(new Line()
+            try
             {
-                Start = stars.First(s => s.ID == lineData["from"].AsString()).Position,
-                End = stars.First(s => s.ID == lineData["to"].AsString()).Position
-            });
+                lines.Add(new Line()
+                {
+                    Start = stars.First(s => s.ID == lineData["from"].AsString()).Position,
+                    End = stars.First(s => s.ID == lineData["to"].AsString()).Position
+                });
+            }
+            catch
+            {
+                GD.Print($"Error when drawing line {lineData["from"]}->{lineData["to"]} in constellation {constellation.Name}");
+            }
         }
         constellation.Lines = lines.ToArray();
         return constellation;
