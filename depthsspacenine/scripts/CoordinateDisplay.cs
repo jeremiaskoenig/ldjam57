@@ -52,7 +52,7 @@ public partial class CoordinateDisplay : Label3D
             }
             else
             {
-                text = "";
+                text = $"Warping to target system!\n\nTarget: {GameState.CurrentConstellation?.Name}";
             }
         }
         else

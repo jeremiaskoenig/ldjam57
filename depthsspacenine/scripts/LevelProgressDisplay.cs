@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class WinDisplay : Label3D
+public partial class LevelProgressDisplay : Label3D
 {
     [Export]
     public GameStateController GameState { get; set; }
@@ -15,6 +15,8 @@ public partial class WinDisplay : Label3D
 
     public override void _Process(double delta)
     {
-        Text = initialText.Replace("{time}", GameState.TimeInCurrentRun.ToString("0.00"));
+        Visible = GameState.CurrentLevel > 0;
+        Text = initialText.Replace("{now}", GameState.CurrentLevel.ToString())
+                          .Replace("{max}", GameState.LevelCount.ToString());
     }
 }

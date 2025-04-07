@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class CameraController : Camera3D
@@ -40,10 +41,33 @@ public partial class CameraController : Camera3D
 
     float inputCooldown = 0.5f;
 
+    float? warpRotationStart = null;
+
     public override void _Process(double delta)
     {
         if (GameState.TransitionTimer > 0)
         {
+            if (warpRotationStart == null)
+            {
+                warpRotationStart = RotationDegrees.Z;
+                warpRotationStart += 360;
+                warpRotationStart %= 360;
+            }
+            if (GameState.TransitionTimer > 2)
+            {
+                var t = Math.Max(0, GameState.TransitionTimer - 3) / 2f;
+                var currentAngle = Rotation.Z;
+                var startAngle = Mathf.DegToRad(warpRotationStart ?? 0);
+                var endAngle = Mathf.DegToRad(GameState.CurrentLevelAngle);
+                var currentFrameTargetAngle = Mathf.LerpAngle(endAngle, startAngle, t);
+                var rotationDelta = currentFrameTargetAngle - currentAngle;
+                RotateZ(rotationDelta);
+            }
+            else
+            {
+                warpRotationStart = null;
+            }
+
             if (GameState.TransitionTimer < 0.4)
             {
                 var t = GameState.TransitionTimer / 0.4f;

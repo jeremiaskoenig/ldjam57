@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b721h56qh0anr" path="res://textures/star_l.png" id="1_n1gmp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tca3y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_we87n"]
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("1_n1gmp")
 
 [sub_resource type="QuadMesh" id="QuadMesh_jx6uf"]
-material = SubResource("StandardMaterial3D_tca3y")
+material = SubResource("StandardMaterial3D_we87n")
 
 [node name="StarL" type="Node3D"]
 

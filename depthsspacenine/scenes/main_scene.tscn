@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=113 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
@@ -7,13 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://b5uxdij2hc3d1" path="res://textures/projector_upper.png" id="3_2mt4p"]
 [ext_resource type="Script" path="res://scripts/WinDisplay.cs" id="4_7wklq"]
 [ext_resource type="Script" path="res://scripts/ProjectorPreview.cs" id="4_tqk4v"]
+[ext_resource type="Texture2D" uid="uid://b4rd16peeis62" path="res://textures/button_small.png" id="5_0v45b"]
 [ext_resource type="Texture2D" uid="uid://5n3cr6t827i" path="res://textures/projection.png" id="5_rnm8k"]
+[ext_resource type="Texture2D" uid="uid://dk1qmadax2amg" path="res://textures/button_large.png" id="6_2i7wp"]
 [ext_resource type="Texture2D" uid="uid://d4jtpgq6r33wy" path="res://textures/scanline.png" id="6_kg5yp"]
 [ext_resource type="Script" path="res://scripts/CoordinateDisplay.cs" id="6_m2bkh"]
 [ext_resource type="Script" path="res://scripts/ScanlineDisplay.cs" id="7_328rh"]
 [ext_resource type="Script" path="res://scripts/DetectionDisplay.cs" id="9_6if5a"]
 [ext_resource type="Script" path="res://scripts/GameStateController.cs" id="10_lhk55"]
 [ext_resource type="Script" path="res://scripts/WarpDisplay.cs" id="11_2jtmv"]
+[ext_resource type="Script" path="res://scripts/LevelProgressDisplay.cs" id="12_rvh73"]
 [ext_resource type="JSON" path="res://constellations/Altar.json" id="12_usoy6"]
 [ext_resource type="PackedScene" uid="uid://ctovcg34y77nb" path="res://scenes/star_s.tscn" id="13_888ss"]
 [ext_resource type="Texture2D" uid="uid://c2ev2mjxahr7c" path="res://textures/nebula.png" id="13_b0cjq"]
@@ -53,6 +56,7 @@
 [ext_resource type="JSON" path="res://constellations/Kranich.json" id="48_nk3jx"]
 [ext_resource type="JSON" path="res://constellations/Krebs.json" id="49_kfgxd"]
 [ext_resource type="JSON" path="res://constellations/KreuzDesSueden.json" id="50_csxn0"]
+[ext_resource type="PackedScene" uid="uid://c776foqbhgb0k" path="res://scenes/target_circle.tscn" id="51_41am2"]
 [ext_resource type="JSON" path="res://constellations/Leier.json" id="51_xestp"]
 [ext_resource type="JSON" path="res://constellations/Loewe.json" id="52_5s6r4"]
 [ext_resource type="JSON" path="res://constellations/Mikroskop.json" id="53_5hb0e"]
@@ -98,6 +102,24 @@ material = SubResource("StandardMaterial3D_edba4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hx0s"]
 size = Vector3(2, 0.1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lyeb"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.627451, 0.745098, 1, 0.239216)
+albedo_texture = ExtResource("5_0v45b")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f5pqs"]
+material = SubResource("StandardMaterial3D_8lyeb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tev73"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.627451, 0.745098, 1, 0.239216)
+albedo_texture = ExtResource("6_2i7wp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eyc0p"]
+material = SubResource("StandardMaterial3D_tev73")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3co5"]
 transparency = 1
@@ -176,7 +198,11 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j836p"]
+shading_mode = 0
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w1j8h"]
+material = SubResource("StandardMaterial3D_j836p")
 radius = 0.01
 height = 0.02
 
@@ -256,7 +282,7 @@ data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl5kt"]
 transparency = 1
 shading_mode = 0
-albedo_color = Color(0, 1, 1, 0.12549)
+albedo_color = Color(1, 0.501961, 0.12549, 0.12549)
 
 [node name="MainScene" type="Node3D"]
 
@@ -276,12 +302,11 @@ transform = Transform3D(0.6, 0, 0, 0, 7.86805e-08, 0.6, 0, -0.6, 7.86805e-08, 0,
 
 [node name="MenuBackground" type="MeshInstance3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
-visible = false
 mesh = SubResource("PlaneMesh_hjbl2")
 skeleton = NodePath("")
 
 [node name="ButtonPlay" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
-transform = Transform3D(0.805, 0, 0, 0, 1, 7.10543e-16, 0, -3.55271e-15, 0.2, 0, 0, -0.55)
+transform = Transform3D(0.805, 0, 0, 0, 1, 7.10543e-16, 0, -3.55271e-15, 0.2, 0, 0, -0.66)
 mesh = SubResource("PlaneMesh_hjbl2")
 skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
@@ -302,7 +327,7 @@ outline_size = 8
 shape = SubResource("BoxShape3D_0hx0s")
 
 [node name="ButtonCredits" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
-transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0)
+transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, -0.22)
 mesh = SubResource("PlaneMesh_hjbl2")
 skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
@@ -322,8 +347,29 @@ outline_size = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/MenuBackground/ButtonCredits/StaticBody3D"]
 shape = SubResource("BoxShape3D_0hx0s")
 
+[node name="ButtonControls" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
+transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.22)
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+script = ExtResource("3_1jk0n")
+Stage = "menu"
+HoverText = "How do what?"
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/MenuBackground/ButtonControls"]
+transform = Transform3D(1.24224, 0, 0, 0, -4.37114e-08, 1, 0, -5, -2.18557e-07, 0, 0, 0)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "◄ Controls ►"
+font_size = 24
+outline_size = 8
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Cockpit/MenuBackground/ButtonControls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/MenuBackground/ButtonControls/StaticBody3D"]
+shape = SubResource("BoxShape3D_0hx0s")
+
 [node name="ButtonQuit" type="MeshInstance3D" parent="Camera3D/Cockpit/MenuBackground"]
-transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
+transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.66)
 mesh = SubResource("PlaneMesh_hjbl2")
 skeleton = NodePath("")
 script = ExtResource("3_1jk0n")
@@ -499,6 +545,94 @@ outline_size = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/WinScreenBackground/ButtonBack/StaticBody3D"]
 shape = SubResource("BoxShape3D_0hx0s")
 
+[node name="ControlsBackground" type="MeshInstance3D" parent="Camera3D/Cockpit"]
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0, -2.6)
+visible = false
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+
+[node name="ControlsTitle" type="Label3D" parent="Camera3D/Cockpit/ControlsBackground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.813071)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "Controls:"
+font_size = 24
+outline_size = 8
+
+[node name="ControlsText" type="Label3D" parent="Camera3D/Cockpit/ControlsBackground"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.18, 0, -0.6)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "roll left
+
+roll right
+
+hold for fast roll"
+font_size = 20
+outline_size = 8
+horizontal_alignment = 0
+vertical_alignment = 0
+
+[node name="ButtonPromptA" type="MeshInstance3D" parent="Camera3D/Cockpit/ControlsBackground"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 3.55271e-16, 0, -3.55271e-16, 0.1, -0.535, 0, -0.535)
+mesh = SubResource("PlaneMesh_f5pqs")
+skeleton = NodePath("")
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/ControlsBackground/ButtonPromptA"]
+transform = Transform3D(7, 0, 0, 0, -3.5, 6.06218, 0, -6.06218, -3.5, 0, 0, -0.35)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "A"
+font_size = 24
+outline_size = 8
+
+[node name="ButtonPromptD" type="MeshInstance3D" parent="Camera3D/Cockpit/ControlsBackground"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 3.55271e-16, 0, -3.55271e-16, 0.1, -0.535, 0, -0.255)
+mesh = SubResource("PlaneMesh_f5pqs")
+skeleton = NodePath("")
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/ControlsBackground/ButtonPromptD"]
+transform = Transform3D(7, 0, 0, 0, -3.5, 6.06218, 0, -6.06218, -3.5, 0, 0, -0.35)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "D"
+font_size = 24
+outline_size = 8
+
+[node name="ButtonPromptShift" type="MeshInstance3D" parent="Camera3D/Cockpit/ControlsBackground"]
+transform = Transform3D(0.2, 0, 0, 0, 0.1, 3.55271e-16, 0, -3.55271e-16, 0.1, -0.535, 0, 0.025)
+mesh = SubResource("PlaneMesh_eyc0p")
+skeleton = NodePath("")
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/ControlsBackground/ButtonPromptShift"]
+transform = Transform3D(3.5, 0, 0, 0, -3.5, 6.06218, 0, -6.06218, -3.5, 0, 0, -0.35)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "Shift"
+font_size = 24
+outline_size = 8
+
+[node name="ButtonBack" type="MeshInstance3D" parent="Camera3D/Cockpit/ControlsBackground"]
+transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
+mesh = SubResource("PlaneMesh_hjbl2")
+skeleton = NodePath("")
+script = ExtResource("3_1jk0n")
+Stage = "controls"
+HoverText = "Back to main menu"
+
+[node name="ButtonText" type="Label3D" parent="Camera3D/Cockpit/ControlsBackground/ButtonBack"]
+transform = Transform3D(1.24224, 0, 0, 0, -4.37114e-08, 1, 0, -5, -2.18557e-07, 0, 0, 0)
+modulate = Color(0.244483, 0.696795, 1, 1)
+outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
+text = "◄ Back ►"
+font_size = 24
+outline_size = 8
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Cockpit/ControlsBackground/ButtonBack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Cockpit/ControlsBackground/ButtonBack/StaticBody3D"]
+shape = SubResource("BoxShape3D_0hx0s")
+
 [node name="Projector 1" type="MeshInstance3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.0109799, 0.0235466, -0.015, -0.0271892, 0.0126785, 0, 0.00633927, 0.0135946, 0.0259808, -0.75, 0.12, -2.24)
 mesh = ExtResource("2_ava2e")
@@ -615,6 +749,17 @@ mesh = SubResource("QuadMesh_cutle")
 script = ExtResource("7_328rh")
 DisplayMaterial = SubResource("StandardMaterial3D_065p0")
 
+[node name="LevelProgress" type="Label3D" parent="Camera3D/Cockpit/DisplayRight" node_paths=PackedStringArray("GameState")]
+transform = Transform3D(1, 1.49012e-08, -2.98023e-08, 1.49012e-08, 1, 0, 0, 0, 1, 1.655, -0.16, 0)
+modulate = Color(1, 0.501961, 0.12549, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "{now} / {max}"
+font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 0
+script = ExtResource("12_rvh73")
+GameState = NodePath("../../../../GameStateController")
+
 [node name="DisplayLeft" type="Node3D" parent="Camera3D/Cockpit"]
 transform = Transform3D(0.0918025, -0.00466026, 0.285571, -0.0747682, 0.289107, 0.0287537, -0.275648, -0.0799709, 0.0873077, -0.692, -0.155, -1.213)
 
@@ -673,7 +818,7 @@ mesh = SubResource("QuadMesh_sisxw")
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin")]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonControls", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin", "ButtonControlsBack", "PanelControls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
 ResourceData = SubResource("JSON_nfh48")
@@ -689,6 +834,7 @@ ConstellationScalingTarget = 1.3
 AngleTolerance = 3.0
 ButtonPlay = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonPlay")
 ButtonCredits = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonCredits")
+ButtonControls = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonControls")
 ButtonQuit = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonQuit")
 PanelMenu = NodePath("../Camera3D/Cockpit/MenuBackground")
 ButtonCreditsBack = NodePath("../Camera3D/Cockpit/CreditsBackground/ButtonBack")
@@ -697,3 +843,6 @@ ButtonLoseBack = NodePath("../Camera3D/Cockpit/LoseScreenBackground/ButtonBack")
 PanelLose = NodePath("../Camera3D/Cockpit/LoseScreenBackground")
 ButtonWinBack = NodePath("../Camera3D/Cockpit/WinScreenBackground/ButtonBack")
 PanelWin = NodePath("../Camera3D/Cockpit/WinScreenBackground")
+ButtonControlsBack = NodePath("../Camera3D/Cockpit/ControlsBackground/ButtonBack")
+PanelControls = NodePath("../Camera3D/Cockpit/ControlsBackground")
+TargetCircle = ExtResource("51_41am2")

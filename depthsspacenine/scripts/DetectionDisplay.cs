@@ -25,6 +25,10 @@ public partial class DetectionDisplay : Label3D
         {
             Text = "\n    Credits";
         }
+        else if (GameState.GameStage == "controls")
+        {
+            Text = "\n    Controls";
+        }
     }
 
     private void UpdateText()
@@ -38,7 +42,7 @@ public partial class DetectionDisplay : Label3D
             }
             else
             {
-                text = "";
+                text = "Outside of Glorpixian\ndetection range";
             }
         }
         else
@@ -49,7 +53,7 @@ public partial class DetectionDisplay : Label3D
                 progress = progress.Substring(0, 23);
             else
                 progress = progress.PadRight(progress.Length + ((23 - progressArrows) * 2), ' ');
-            text = $"Glorpixian Detection Probe\n\n[{progress}]";
+            text = $"Glorpixian detection\nprogress\n[{progress}]";
         }
 
         Text = text;

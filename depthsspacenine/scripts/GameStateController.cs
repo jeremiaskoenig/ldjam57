@@ -53,6 +53,9 @@ public partial class GameStateController : Node
     public MainMenuButton ButtonCredits { get; set; }
  
     [Export]
+    public MainMenuButton ButtonControls { get; set; }
+ 
+    [Export]
     public MainMenuButton ButtonQuit { get; set; }
 
     [Export]
@@ -76,6 +79,12 @@ public partial class GameStateController : Node
     [Export]
     public Node3D PanelWin { get; set; }
 
+    [Export]
+    public MainMenuButton ButtonControlsBack { get; set; }
+ 
+    [Export]
+    public Node3D PanelControls { get; set; }
+
     public string CurrentHoverText { get; set; }
 
     public string GameStage { get; set; } = "menu";
@@ -84,28 +93,56 @@ public partial class GameStateController : Node
 
     public float TimeInCurrentRun { get; set;}
 
+    public int CurrentLevel { get; set; }
+    public int LevelCount { get; set; }
+
+    [Export]
+    public bool ShuffleConstellations { get; set; } = true;
+
+    [Export]
+    public PackedScene TargetCircle { get; set; }
     public override void _Ready()
     {
         ButtonPlay.ButtonClicked += () => 
         {
+            GameStage = "game";
+            DetectionProgress = 0;
             TransitionTimer = 5;
             TimeInCurrentRun = 0;
-            GameStage = "game";
+            CurrentLevel = 0;
             constellationQueue.Clear();
-            foreach (var resource in Constellations.Take(3))
+            List<Constellation> constellationList = new List<Constellation>();
+            foreach (var resource in Constellations)
             {
                 var result = BuildConstellation(resource);
                 if (result != null)
                 {
-                    constellationQueue.Enqueue(result);
+                    constellationList.Add(result);
                 }
             }
+            if (ShuffleConstellations)
+            {
+                Random rng = new Random();
+                int n = constellationList.Count - 1;  
+                while (n > 1) {  
+                    n--;  
+                    int i = GD.RandRange(0, n + 1);
+                    var value = constellationList[i];  
+                    constellationList[i] = constellationList[n];  
+                    constellationList[n] = value;  
+                }  
+            }
+            constellationList.ForEach(constellation => constellationQueue.Enqueue(constellation));
+
+            LevelCount = constellationQueue.Count;
         };
         ButtonCredits.ButtonClicked += () => GameStage = "credits";
+        ButtonControls.ButtonClicked += () => GameStage = "controls";
         ButtonQuit.ButtonClicked += () => GetTree().Quit();
         ButtonCreditsBack.ButtonClicked += () => GameStage = "menu";
         ButtonLoseBack.ButtonClicked += () => GameStage = "menu";
         ButtonWinBack.ButtonClicked += () => GameStage = "menu";
+        ButtonControlsBack.ButtonClicked += () => GameStage = "menu";
     }
 
     private Constellation BuildConstellation(Resource from)
@@ -126,11 +163,13 @@ public partial class GameStateController : Node
     {
         PanelMenu.Visible = GameStage == "menu";
         PanelCredits.Visible = GameStage == "credits";
+        PanelControls.Visible = GameStage == "controls";
         PanelLose.Visible = GameStage == "end_lose";
         PanelWin.Visible = GameStage == "end_win";
 
         if (GameStage == "game")
         {
+            StarLayer.Visible = TransitionTimer > 1.9 || TransitionTimer <= 0;
             DetectionProgress += (float)(delta * 0.1f);
             TimeInCurrentRun += (float)delta;
             if (TransitionTimer > 0)
@@ -180,6 +219,20 @@ public partial class GameStateController : Node
         }
     }
 
+    public void ClearView()
+    {
+        var starLayerChildren = StarLayer.GetChildren();
+        foreach (var oldStar in starLayerChildren)
+        {
+            oldStar.QueueFree();
+        }
+        var targetLayerChildren = TargetLayer.GetChildren();
+        foreach(var oldTargetLayerItem in targetLayerChildren)
+        {
+            oldTargetLayerItem.QueueFree();
+        }
+    }
+
     private void ApplyLine(Line line)
     {
         var pathItem = new Path3D();
@@ -190,10 +243,10 @@ public partial class GameStateController : Node
         csgPolygon.PathNode = pathItem.GetPath();
         csgPolygon.Polygon = new Vector2[]
         {
-            new Vector2(-0.01f, -0.01f),
-            new Vector2(-0.01f, 0.01f),
-            new Vector2(0.01f, 0.01f),
-            new Vector2(0.01f, -0.01f),
+            new Vector2(-0.005f, -0.005f),
+            new Vector2(-0.005f, 0.005f),
+            new Vector2(0.005f, 0.005f),
+            new Vector2(0.005f, -0.005f),
         };
         csgPolygon.PathIntervalType = CsgPolygon3D.PathIntervalTypeEnum.Distance;
         csgPolygon.PathInterval = 1;
@@ -206,27 +259,25 @@ public partial class GameStateController : Node
         csgPolygon.SmoothFaces = false;
         csgPolygon.Material = TargetDisplayMaterial;
 
-        var start = new Vector3(line.Start.X, 0, line.Start.Y) * ConstellationScalingTarget;
-        var end = new Vector3(line.End.X, 0, line.End.Y) * ConstellationScalingTarget;
+        Vector3 start = new Vector3(line.Start.X, 0, line.Start.Y) * ConstellationScalingTarget;
+        Vector3 end = new Vector3(line.End.X, 0, line.End.Y) * ConstellationScalingTarget;
+
+        const float scaleFactor = 0.035f;
+
+        var dir = (end - start) / 2;
+        dir = dir.Normalized();
+
+        var actualStart = start + (dir * scaleFactor);
+        var actualEnd = end + (dir * scaleFactor * -1);
 
         pathItem.Curve = new Curve3D();
-        pathItem.Curve.AddPoint(start);
-        pathItem.Curve.AddPoint(end);
+        pathItem.Curve.AddPoint(actualStart);
+        pathItem.Curve.AddPoint(actualEnd);
     }
 
     private void ApplyConstellation(Constellation data)
     {
-        var starLayerChildren = StarLayer.GetChildren();
-        foreach (var oldStar in starLayerChildren)
-        {
-            oldStar.QueueFree();
-        }
-        var targetLayerChildren = TargetLayer.GetChildren();
-        foreach(var oldTargetLayerItem in targetLayerChildren)
-        {
-            oldTargetLayerItem.QueueFree();
-        }
-
+        ClearView();
         foreach (var starData in data.Stars)
         {
             Node3D newStar;
@@ -246,6 +297,11 @@ public partial class GameStateController : Node
             newStar.Position = new Vector3(starPos.X, starPos.Y, 0);
             newStar.Name = $"Star_{starData.ID}";
             StarLayer.AddChild(newStar);
+
+            var targetCircle = TargetCircle.Instantiate<Node3D>();
+            var targetCirclePos = starData.Position;
+            targetCircle.Position = new Vector3(targetCirclePos.X, 0, targetCirclePos.Y) * ConstellationScalingTarget;
+            TargetLayer.AddChild(targetCircle);
         }
         var randomStarsSmall = GD.RandRange(8, 12);
         for (int i = 0; i < randomStarsSmall; i++)
@@ -311,6 +367,7 @@ public partial class GameStateController : Node
         }
 
         CurrentLevelAngle = FindNewAngle();
+        CurrentLevel++;
         StarLayer.RotationDegrees = new Vector3(0, 0, CurrentLevelAngle);
     }
 
