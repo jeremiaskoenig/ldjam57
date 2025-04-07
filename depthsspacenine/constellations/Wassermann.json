@@ -1,0 +1,26 @@
+{
+    "name": "Wassermann",
+    "name_sci": "Aquarius",
+    "coordinates": [
+        { "id": "A", "x": 196, "y": 755, "size": "s" },
+        { "id": "B", "x": 260, "y": 643, "size": "m" },
+        { "id": "C", "x": 283, "y": 597, "size": "s" },
+        { "id": "D", "x": 265, "y": 474, "size": "s" },
+        { "id": "E", "x": 351, "y": 323, "size": "s" },
+		{ "id": "F", "x": 384, "y": 319, "size": "s" },
+		{ "id": "G", "x": 420, "y": 347, "size": "s" },
+		{ "id": "H", "x": 503, "y": 325, "size": "m" },
+		{ "id": "I", "x": 647, "y": 346, "size": "m" },
+		{ "id": "J", "x": 894, "y": 527, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "J" }
+    ]
+}

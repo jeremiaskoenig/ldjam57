@@ -1,0 +1,18 @@
+{
+    "name": "Mikroskop",
+    "name_sci": "Microscopium",
+    "coordinates": [
+        { "id": "A", "x": 412, "y": 295, "size": "s" },
+        { "id": "B", "x": 581, "y": 295, "size": "s" },
+        { "id": "C", "x": 692, "y": 371, "size": "s" },
+        { "id": "D", "x": 680, "y": 858, "size": "s" },
+        { "id": "E", "x": 398, "y": 704, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "A" }
+    ]
+}

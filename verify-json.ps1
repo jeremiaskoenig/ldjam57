@@ -1,4 +1,4 @@
-Get-ChildItem -Path "assets" -Filter *.json | ForEach-Object {
+Get-ChildItem -Path "assets\\json" -Filter *.json | ForEach-Object {
     $fileName = $_.FullName
     try {
         $content = Get-Content -Path $_.FullName -Raw

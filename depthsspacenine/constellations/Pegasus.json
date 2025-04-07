@@ -1,0 +1,25 @@
+{
+    "name": "Pegasus",
+    "name_sci": "Pegasus",
+    "coordinates": [
+        { "id": "A", "x": 595, "y": 307, "size": "s" },
+        { "id": "B", "x": 491, "y": 351, "size": "m" },
+        { "id": "C", "x": 180, "y": 297, "size": "m" },
+        { "id": "D", "x": 107, "y": 611, "size": "m" },
+        { "id": "E", "x": 477, "y": 636, "size": "m" },
+		{ "id": "F", "x": 574, "y": 705, "size": "s" },
+		{ "id": "G", "x": 600, "y": 739, "size": "m" },
+		{ "id": "H", "x": 777, "y": 837, "size": "s" },
+		{ "id": "I", "x": 919, "y": 746, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "E", "to": "B" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" }
+    ]
+}

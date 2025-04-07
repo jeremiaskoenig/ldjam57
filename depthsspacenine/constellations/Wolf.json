@@ -1,0 +1,25 @@
+{
+    "name": "Wolf",
+    "name_sci": "Lupus",
+    "coordinates": [
+        { "id": "A", "x": 218, "y": 424, "size": "s" },
+        { "id": "B", "x": 387, "y": 503, "size": "m" },
+        { "id": "C", "x": 465, "y": 616, "size": "m" },
+        { "id": "D", "x": 527, "y": 753, "size": "s" },
+        { "id": "E", "x": 521, "y": 868, "size": "s" },
+		{ "id": "F", "x": 469, "y": 336, "size": "s" },
+		{ "id": "G", "x": 474, "y": 485, "size": "s" },
+		{ "id": "H", "x": 614, "y": 569, "size": "m" },
+		{ "id": "I", "x": 703, "y": 719, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "B", "to": "G" }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Segel des Schiffs",
+    "name_sci": "Vela",
+    "coordinates": [
+        { "id": "A", "x": 418, "y": 318, "size": "m" },
+        { "id": "B", "x": 709, "y": 494, "size": "l" },
+        { "id": "C", "x": 490, "y": 678, "size": "m" },
+        { "id": "D", "x": 325, "y": 669, "size": "m" },
+        { "id": "E", "x": 282, "y": 731, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "A", "to": "C" },
+		{ "from": "A", "to": "D" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Kreuz des Süden",
+    "name_sci": "Crux",
+    "coordinates": [
+        { "id": "A", "x": 479, "y": 355, "size": "l" },
+        { "id": "B", "x": 460, "y": 630, "size": "l" },
+        { "id": "C", "x": 365, "y": 460, "size": "m" },
+        { "id": "D", "x": 563, "y": 448, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "C", "to": "D" }
+    ]
+}
