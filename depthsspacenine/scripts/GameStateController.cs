@@ -425,7 +425,7 @@ public partial class GameStateController : Node
                 ID = star["id"].AsString(),
                 Position = new Vector2(
                     (star["x"].AsInt32() - 500) * 0.002f,
-                    (star["y"].AsInt32() - 500) * 0.002f
+                    (star["y"].AsInt32() - 500) * -0.002f
                 ),
                 Size = star["size"].AsString()
             });
