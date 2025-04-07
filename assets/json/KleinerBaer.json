@@ -17,6 +17,6 @@
 		{ "from": "D", "to": "E" },
 		{ "from": "E", "to": "F" },
 		{ "from": "F", "to": "G" },
-		{ "from": "F", "to": "D" }
+		{ "from": "G", "to": "D" }
     ]
 }

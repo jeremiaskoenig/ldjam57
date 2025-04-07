@@ -28,7 +28,6 @@
 		{ "from": "F", "to": "G" },
 		{ "from": "G", "to": "H" },
 		{ "from": "H", "to": "I" },
-		{ "from": "D", "to": "I" },
 		{ "from": "I", "to": "J" },
 		{ "from": "J", "to": "K" },
 		{ "from": "L", "to": "M" },
