@@ -29,10 +29,12 @@ public partial class CameraController : Camera3D
         if (Input.IsKeyPressed(Key.Q))
         {
             RotateZ(Mathf.DegToRad(-speed));
+            inputCooldown = 0.5f;
         }
         else if (Input.IsKeyPressed(Key.E))
         {
             RotateZ(Mathf.DegToRad(speed));
+            inputCooldown = 0.5f;
         }
     }
 
@@ -58,13 +60,5 @@ public partial class CameraController : Camera3D
         {
             GameState.TransitionTimer = 5;
         }
-    }
-
-    public override void _Input(InputEvent e)
-    {
-        if (GameState.TransitionTimer > 0)
-            return;
-
-        inputCooldown = 0.5f;
     }
 }
