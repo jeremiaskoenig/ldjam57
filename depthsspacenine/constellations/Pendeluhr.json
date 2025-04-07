@@ -1,0 +1,21 @@
+{
+    "name": "Pendeluhr",
+    "name_sci": "Horologium",
+    "coordinates": [
+        { "id": "A", "x": 207, "y": 258, "size": "m" },
+        { "id": "B", "x": 224, "y": 246, "size": "s" },
+        { "id": "C", "x": 649, "y": 469, "size": "l" },
+        { "id": "D", "x": 701, "y": 501, "size": "s" },
+        { "id": "E", "x": 720, "y": 560, "size": "s" },
+		{ "id": "F", "x": 700, "y": 620, "size": "s" },
+		{ "id": "G", "x": 585, "y": 770, "size": "s" },
+		{ "id": "H", "x": 593, "y": 905, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" }
+    ]
+}

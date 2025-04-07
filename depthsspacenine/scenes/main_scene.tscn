@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=104 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
@@ -49,6 +49,33 @@
 [ext_resource type="JSON" path="res://constellations/Kepheus.json" id="40_5kc1x"]
 [ext_resource type="JSON" path="res://constellations/KielDesSchiffs.json" id="41_1dv4p"]
 [ext_resource type="Texture2D" uid="uid://wrgu4jldyg14" path="res://textures/star_s.png" id="46_2uew0"]
+[ext_resource type="JSON" path="res://constellations/KleinerBaer.json" id="47_imjn7"]
+[ext_resource type="JSON" path="res://constellations/Kranich.json" id="48_nk3jx"]
+[ext_resource type="JSON" path="res://constellations/Krebs.json" id="49_kfgxd"]
+[ext_resource type="JSON" path="res://constellations/KreuzDesSueden.json" id="50_csxn0"]
+[ext_resource type="JSON" path="res://constellations/Leier.json" id="51_xestp"]
+[ext_resource type="JSON" path="res://constellations/Loewe.json" id="52_5s6r4"]
+[ext_resource type="JSON" path="res://constellations/Mikroskop.json" id="53_5hb0e"]
+[ext_resource type="JSON" path="res://constellations/Netz.json" id="54_j2j3l"]
+[ext_resource type="JSON" path="res://constellations/NoerdlicheKrone.json" id="55_68bg5"]
+[ext_resource type="JSON" path="res://constellations/Orion.json" id="56_h80x4"]
+[ext_resource type="JSON" path="res://constellations/Pegasus.json" id="57_7u6al"]
+[ext_resource type="JSON" path="res://constellations/Pendeluhr.json" id="58_86ebr"]
+[ext_resource type="JSON" path="res://constellations/Perseus.json" id="59_mluwt"]
+[ext_resource type="JSON" path="res://constellations/Pfau.json" id="60_vkpxq"]
+[ext_resource type="JSON" path="res://constellations/Schlangentraeger.json" id="61_pkjci"]
+[ext_resource type="JSON" path="res://constellations/Schuetze.json" id="62_3deqo"]
+[ext_resource type="JSON" path="res://constellations/Schwan.json" id="63_pllu0"]
+[ext_resource type="JSON" path="res://constellations/SegelDesSchiffs.json" id="64_vdyk8"]
+[ext_resource type="JSON" path="res://constellations/Skorpion.json" id="65_6t3i8"]
+[ext_resource type="JSON" path="res://constellations/Steinbock.json" id="66_2blq5"]
+[ext_resource type="JSON" path="res://constellations/Stier.json" id="67_2sgo4"]
+[ext_resource type="JSON" path="res://constellations/Waage.json" id="68_lnj46"]
+[ext_resource type="JSON" path="res://constellations/Walfisch.json" id="69_kh2o4"]
+[ext_resource type="JSON" path="res://constellations/Wassermann.json" id="70_xg2mc"]
+[ext_resource type="JSON" path="res://constellations/Wolf.json" id="71_j4fvq"]
+[ext_resource type="JSON" path="res://constellations/Zentaur.json" id="72_2ng25"]
+[ext_resource type="JSON" path="res://constellations/Zwillinge.json" id="73_clw3e"]
 
 [sub_resource type="Curve" id="Curve_sm8it"]
 min_value = 0.25
@@ -167,6 +194,64 @@ uv1_scale = Vector3(2, 2, 2)
 [sub_resource type="QuadMesh" id="QuadMesh_sisxw"]
 material = SubResource("StandardMaterial3D_u1ese")
 size = Vector2(2, 2)
+
+[sub_resource type="JSON" id="JSON_nfh48"]
+data = {
+"coordinates": [{
+"id": "A",
+"size": "m",
+"x": 360.0,
+"y": 200.0
+}, {
+"id": "B",
+"size": "l",
+"x": 408.0,
+"y": 482.0
+}, {
+"id": "C",
+"size": "m",
+"x": 593.0,
+"y": 517.0
+}, {
+"id": "D",
+"size": "s",
+"x": 600.0,
+"y": 374.0
+}, {
+"id": "E",
+"size": "s",
+"x": 632.0,
+"y": 673.0
+}, {
+"id": "F",
+"size": "m",
+"x": 405.0,
+"y": 522.0
+}, {
+"id": "G",
+"size": "m",
+"x": 368.0,
+"y": 737.0
+}],
+"lines": [{
+"from": "A",
+"to": "B"
+}, {
+"from": "B",
+"to": "C"
+}, {
+"from": "C",
+"to": "D"
+}, {
+"from": "C",
+"to": "E"
+}, {
+"from": "F",
+"to": "G"
+}],
+"name": "Altar",
+"name_sci": "Ara"
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl5kt"]
 transparency = 1
@@ -567,6 +652,7 @@ scale_amount_curve = SubResource("Curve_ldqvi")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D" node_paths=PackedStringArray("GameState")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0684242, 0, -40.5586)
+visible = false
 amount = 200
 lifetime = 0.5
 draw_order = 3
@@ -590,8 +676,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 [node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
-ResourceData = ExtResource("12_usoy6")
-Constellations = Array[Resource]([ExtResource("13_ft3kp"), ExtResource("14_686se"), ExtResource("12_usoy6"), ExtResource("15_68im5"), ExtResource("16_u0uck"), ExtResource("17_2nrgs"), ExtResource("18_vkq7a"), ExtResource("19_4wqfb"), ExtResource("20_djyqc"), ExtResource("21_bfnny"), ExtResource("22_241j8"), ExtResource("23_g1m8o"), ExtResource("24_bealu"), ExtResource("25_kob33"), ExtResource("26_ycf4q"), ExtResource("27_tu8f0"), ExtResource("28_fheb2"), ExtResource("29_g2vyf"), ExtResource("30_likcx"), ExtResource("31_h5m6h"), ExtResource("32_l0fy7"), ExtResource("33_7loss"), ExtResource("34_2ntpj"), ExtResource("35_omeek"), ExtResource("36_dmil5"), ExtResource("37_s3iqa"), ExtResource("38_fr5ul"), ExtResource("39_1lrow"), ExtResource("40_5kc1x"), ExtResource("41_1dv4p")])
+ResourceData = SubResource("JSON_nfh48")
+Constellations = Array[Resource]([ExtResource("13_ft3kp"), ExtResource("14_686se"), ExtResource("12_usoy6"), ExtResource("15_68im5"), ExtResource("16_u0uck"), ExtResource("17_2nrgs"), ExtResource("18_vkq7a"), ExtResource("19_4wqfb"), ExtResource("20_djyqc"), ExtResource("21_bfnny"), ExtResource("22_241j8"), ExtResource("23_g1m8o"), ExtResource("24_bealu"), ExtResource("25_kob33"), ExtResource("26_ycf4q"), ExtResource("27_tu8f0"), ExtResource("28_fheb2"), ExtResource("29_g2vyf"), ExtResource("30_likcx"), ExtResource("31_h5m6h"), ExtResource("32_l0fy7"), ExtResource("33_7loss"), ExtResource("34_2ntpj"), ExtResource("35_omeek"), ExtResource("36_dmil5"), ExtResource("37_s3iqa"), ExtResource("38_fr5ul"), ExtResource("39_1lrow"), ExtResource("40_5kc1x"), ExtResource("41_1dv4p"), ExtResource("47_imjn7"), ExtResource("48_nk3jx"), ExtResource("49_kfgxd"), ExtResource("50_csxn0"), ExtResource("51_xestp"), ExtResource("52_5s6r4"), ExtResource("53_5hb0e"), ExtResource("54_j2j3l"), ExtResource("55_68bg5"), ExtResource("56_h80x4"), ExtResource("57_7u6al"), ExtResource("58_86ebr"), ExtResource("59_mluwt"), ExtResource("60_vkpxq"), ExtResource("61_pkjci"), ExtResource("62_3deqo"), ExtResource("63_pllu0"), ExtResource("64_vdyk8"), ExtResource("65_6t3i8"), ExtResource("66_2blq5"), ExtResource("67_2sgo4"), ExtResource("68_lnj46"), ExtResource("69_kh2o4"), ExtResource("70_xg2mc"), ExtResource("71_j4fvq"), ExtResource("72_2ng25"), ExtResource("73_clw3e")])
 StarLayer = NodePath("../StarLayer")
 TargetLayer = NodePath("../Camera3D/Cockpit/TargetLayer")
 TargetDisplayMaterial = SubResource("StandardMaterial3D_wl5kt")

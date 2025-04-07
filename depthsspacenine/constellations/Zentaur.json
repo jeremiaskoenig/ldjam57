@@ -1,0 +1,30 @@
+{
+    "name": "Zentaur",
+    "name_sci": "Centaurus",
+    "coordinates": [
+        { "id": "A", "x": 129, "y": 367, "size": "s" },
+        { "id": "B", "x": 228, "y": 349, "size": "s" },
+        { "id": "C", "x": 339, "y": 169, "size": "m" },
+        { "id": "D", "x": 425, "y": 315, "size": "s" },
+        { "id": "E", "x": 556, "y": 200, "size": "s" },
+		{ "id": "F", "x": 426, "y": 333, "size": "s" },
+		{ "id": "G", "x": 408, "y": 444, "size": "m" },
+		{ "id": "H", "x": 303, "y": 776, "size": "l" },
+		{ "id": "I", "x": 403, "y": 752, "size": "l" },
+		{ "id": "J", "x": 471, "y": 587, "size": "s" },
+		{ "id": "K", "x": 692, "y": 501, "size": "m" },
+		{ "id": "L", "x": 800, "y": 570, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "F", "to": "G" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "L" },
+		{ "from": "G", "to": "J" }
+    ]
+}

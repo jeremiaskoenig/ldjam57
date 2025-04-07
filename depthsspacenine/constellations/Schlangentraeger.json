@@ -1,0 +1,41 @@
+{
+    "name": "Schlangenträger",
+    "name_sci": "Ophiuchus",
+    "coordinates": [
+        { "id": "A", "x": 114, "y": 434, "size": "s" },
+        { "id": "B", "x": 235, "y": 577, "size": "s" },
+        { "id": "C", "x": 290, "y": 313, "size": "s" },
+        { "id": "D", "x": 312, "y": 272, "size": "m" },
+        { "id": "E", "x": 358, "y": 106, "size": "m" },
+		{ "id": "F", "x": 465, "y": 67, "size": "s" },
+		{ "id": "G", "x": 554, "y": 172, "size": "s" },
+		{ "id": "H", "x": 695, "y": 329, "size": "s" },
+		{ "id": "I", "x": 781, "y": 452, "size": "m" },
+		{ "id": "J", "x": 907, "y": 282, "size": "s" },
+		{ "id": "K", "x": 936, "y": 241, "size": "s" },
+		{ "id": "L", "x": 759, "y": 473, "size": "s" },
+		{ "id": "M", "x": 657, "y": 594, "size": "m" },
+		{ "id": "N", "x": 486, "y": 699, "size": "m" },
+		{ "id": "O", "x": 427, "y": 897, "size": "s" },
+		{ "id": "P", "x": 348, "y": 695, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "D", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "L", "to": "M" },
+		{ "from": "M", "to": "N" },
+		{ "from": "N", "to": "O" },
+		{ "from": "N", "to": "P" },
+		{ "from": "P", "to": "B" }
+		
+    ]
+}

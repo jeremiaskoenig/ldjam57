@@ -10,15 +10,6 @@
     "lines": [
         { "from": "A", "to": "B" },
 		{ "from": "B", "to": "C" },
-		{ "from": "C", "to": "D" },
-		{ "from": "D", "to": "E" },
-		{ "from": "E", "to": "F" },
-		{ "from": "E", "to": "G" },
-		{ "from": "D", "to": "G" },
-		{ "from": "G", "to": "F" },
-		{ "from": "D", "to": "I" },
-		{ "from": "I", "to": "J" },
-		{ "from": "J", "to": "K" },
-		{ "from": "K", "to": "E" },
+		{ "from": "C", "to": "D" }
     ]
 }

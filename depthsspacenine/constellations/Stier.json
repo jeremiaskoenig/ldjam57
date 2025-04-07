@@ -1,0 +1,30 @@
+{
+    "name": "Stier",
+    "name_sci": "Taurus",
+    "coordinates": [
+        { "id": "A", "x": 265, "y": 510, "size": "m" },
+        { "id": "B", "x": 499, "y": 591, "size": "l" },
+        { "id": "C", "x": 528, "y": 599, "size": "s" },
+        { "id": "D", "x": 561, "y": 604, "size": "s" },
+        { "id": "E", "x": 638, "y": 651, "size": "s" },
+		{ "id": "F", "x": 774, "y": 686, "size": "s" },
+		{ "id": "G", "x": 634, "y": 757, "size": "s" },
+		{ "id": "H", "x": 784, "y": 695, "size": "s" },
+		{ "id": "I", "x": 747, "y": 833, "size": "s" },
+		{ "id": "J", "x": 314, "y": 393, "size": "l" },
+		{ "id": "K", "x": 527, "y": 549, "size": "s" },
+		{ "id": "L", "x": 549, "y": 573, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "H", "to": "I" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "L" },
+		{ "from": "L", "to": "D" }
+    ]
+}

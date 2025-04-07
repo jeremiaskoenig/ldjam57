@@ -1,0 +1,39 @@
+{
+    "name": "Walfisch",
+    "name_sci": "Cetus",
+    "coordinates": [
+        { "id": "A", "x": 133, "y": 284, "size": "l" },
+        { "id": "B", "x": 146, "y": 186, "size": "s" },
+        { "id": "C", "x": 220, "y": 161, "size": "s" },
+        { "id": "D", "x": 301, "y": 194, "size": "s" },
+        { "id": "E", "x": 264, "y": 251, "size": "s" },
+		{ "id": "F", "x": 226, "y": 298, "size": "m" },
+		{ "id": "G", "x": 245, "y": 355, "size": "m" },
+		{ "id": "H", "x": 346, "y": 421, "size": "l" },
+		{ "id": "I", "x": 485, "y": 567, "size": "s" },
+		{ "id": "J", "x": 618, "y": 523, "size": "s" },
+		{ "id": "K", "x": 693, "y": 564, "size": "m" },
+		{ "id": "L", "x": 934, "y": 545, "size": "m" },
+		{ "id": "M", "x": 808, "y": 723, "size": "l" },
+		{ "id": "N", "x": 521, "y": 676, "size": "m" },
+		{ "id": "O", "x": 446, "y": 780, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "A", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "K" },
+		{ "from": "K", "to": "L" },
+		{ "from": "L", "to": "M" },
+		{ "from": "M", "to": "K" },
+		{ "from": "I", "to": "N" },
+		{ "from": "N", "to": "O" }
+    ]
+}

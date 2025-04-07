@@ -10,7 +10,6 @@
     "lines": [
         { "from": "A", "to": "B" },
 		{ "from": "B", "to": "C" },
-		{ "from": "C", "to": "D" },
-		{ "from": "D", "to": "E" }
+		{ "from": "C", "to": "D" }
     ]
 }

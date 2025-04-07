@@ -1,0 +1,16 @@
+{
+    "name": "Netz",
+    "name_sci": "Reticulum",
+    "coordinates": [
+        { "id": "A", "x": 371, "y": 365, "size": "s" },
+        { "id": "B", "x": 500, "y": 476, "size": "s" },
+        { "id": "C", "x": 592, "y": 665, "size": "m" },
+        { "id": "D", "x": 400, "y": 538, "size": "m" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "A" }
+    ]
+}

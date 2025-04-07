@@ -1,0 +1,26 @@
+{
+    "name": "Löwe",
+    "name_sci": "Leo",
+    "coordinates": [
+        { "id": "A", "x": 905, "y": 368, "size": "s" },
+        { "id": "B", "x": 851, "y": 303, "size": "s" },
+        { "id": "C", "x": 698, "y": 393, "size": "s" },
+        { "id": "D", "x": 680, "y": 497, "size": "m" },
+        { "id": "E", "x": 775, "y": 587, "size": "s" },
+		{ "id": "F", "x": 773, "y": 732, "size": "m" },
+		{ "id": "G", "x": 299, "y": 632, "size": "s" },
+		{ "id": "H", "x": 49, "y": 639, "size": "m" },
+		{ "id": "I", "x": 305, "y": 482, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "D" }
+    ]
+}

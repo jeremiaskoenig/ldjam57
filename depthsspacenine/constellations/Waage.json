@@ -1,0 +1,18 @@
+{
+    "name": "Waage",
+    "name_sci": "Libra",
+    "coordinates": [
+        { "id": "A", "x": 398, "y": 889, "size": "s" },
+        { "id": "B", "x": 393, "y": 386, "size": "s" },
+        { "id": "C", "x": 561, "y": 175, "size": "l" },
+        { "id": "D", "x": 800, "y": 430, "size": "m" },
+        { "id": "E", "x": 677, "y": 778, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "B", "to": "D" }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Steinbock",
+    "name_sci": "Capricornus",
+    "coordinates": [
+        { "id": "A", "x": 887, "y": 395, "size": "l" },
+        { "id": "B", "x": 858, "y": 471, "size": "l" },
+        { "id": "C", "x": 790, "y": 571, "size": "s" },
+        { "id": "D", "x": 646, "y": 820, "size": "m" },
+        { "id": "E", "x": 600, "y": 875, "size": "m" },
+		{ "id": "F", "x": 331, "y": 726, "size": "s" },
+		{ "id": "G", "x": 158, "y": 591, "size": "l" },
+		{ "id": "H", "x": 215, "y": 535, "size": "m" },
+		{ "id": "I", "x": 358, "y": 535, "size": "s" },
+		{ "id": "J", "x": 491, "y": 548, "size": "s" }
+    ],
+    "lines": [
+        { "from": "A", "to": "B" },
+		{ "from": "B", "to": "C" },
+		{ "from": "C", "to": "D" },
+		{ "from": "D", "to": "E" },
+		{ "from": "E", "to": "F" },
+		{ "from": "F", "to": "G" },
+		{ "from": "G", "to": "H" },
+		{ "from": "H", "to": "I" },
+		{ "from": "I", "to": "J" },
+		{ "from": "J", "to": "B" }
+    ]
+}
