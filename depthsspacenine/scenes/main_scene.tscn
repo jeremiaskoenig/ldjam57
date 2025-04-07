@@ -136,6 +136,22 @@ material = SubResource("StandardMaterial3D_ct8t4")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.258427, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ikhm7"]
+emission_shape = 6
+emission_ring_axis = Vector3(5, 5, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 2.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 74.71
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w1j8h"]
+radius = 0.125
+height = 10.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1ese"]
 shading_mode = 0
 albedo_texture = ExtResource("13_b0cjq")
@@ -144,13 +160,6 @@ uv1_scale = Vector3(2, 2, 2)
 [sub_resource type="QuadMesh" id="QuadMesh_sisxw"]
 material = SubResource("StandardMaterial3D_u1ese")
 size = Vector2(2, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fq7n"]
-shading_mode = 0
-albedo_color = Color(0, 0.20487, 0.416248, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_uij5p"]
-material = SubResource("StandardMaterial3D_4fq7n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wl5kt"]
 transparency = 1
@@ -547,19 +556,22 @@ scale_amount_min = 0.01
 scale_amount_max = 0.02
 scale_amount_curve = SubResource("Curve_ldqvi")
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0684242, 0, -8.55856)
+visible = false
+amount = 50
+lifetime = 2.0
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_ikhm7")
+draw_pass_1 = SubResource("CapsuleMesh_w1j8h")
+script = ExtResource("11_2jtmv")
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.89417, -0.236623, -0.380092, 0.067067, -0.768569, 0.636242, -0.442676, -0.5944, -0.671361, -4.7994, 2.01321, -0.739324)
 
 [node name="Backdrop" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, -27.5)
 mesh = SubResource("QuadMesh_sisxw")
-
-[node name="WarpLayer" type="MeshInstance3D" parent="." node_paths=PackedStringArray("GameState")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -3)
-visible = false
-mesh = SubResource("PlaneMesh_uij5p")
-script = ExtResource("11_2jtmv")
-GameState = NodePath("../GameStateController")
 
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
