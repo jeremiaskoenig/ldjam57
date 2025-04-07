@@ -82,10 +82,14 @@ public partial class GameStateController : Node
 
     private readonly Queue<Constellation> constellationQueue = new Queue<Constellation>();
 
+    public float TimeInCurrentRun { get; set;}
+
     public override void _Ready()
     {
         ButtonPlay.ButtonClicked += () => 
         {
+            TransitionTimer = 5;
+            TimeInCurrentRun = 0;
             GameStage = "game";
             constellationQueue.Clear();
             foreach (var resource in Constellations.Take(3))
@@ -128,6 +132,7 @@ public partial class GameStateController : Node
         if (GameStage == "game")
         {
             DetectionProgress += (float)(delta * 0.1f);
+            TimeInCurrentRun += (float)delta;
             if (TransitionTimer > 0)
             {
                 TargetLayer.Visible = TransitionTimer > 2;
@@ -172,20 +177,6 @@ public partial class GameStateController : Node
         else if (GameStage == "credits")
         {
             CurrentHoverText = ButtonCreditsBack.CurrentHoverText ?? "";
-        }
-        else if (GameStage == "end_win")
-        {
-            //TODO: Show highscore
-            //      > How do we want to count highscore?
-            //        just track time spent in the game?
-            //        Message could be "You escaped the Glorpixians in ### seconds!"
-            //      > Do we bother reseting the game?
-            //        we'd need a reset for "lose" anyway, so it makes sense
-        }
-        else if (GameStage == "end_lose")
-        {
-            //TODO: Show lose screen
-            //      > Do we show any animation? Anything getting blown up?
         }
     }
 

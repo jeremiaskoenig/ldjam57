@@ -1,10 +1,11 @@
-[gd_scene load_steps=74 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=76 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
 [ext_resource type="ArrayMesh" uid="uid://d306jfuweujvl" path="res://meshes/projector.obj" id="2_ava2e"]
 [ext_resource type="Script" path="res://scripts/MainMenuButton.cs" id="3_1jk0n"]
 [ext_resource type="Texture2D" uid="uid://b5uxdij2hc3d1" path="res://textures/projector_upper.png" id="3_2mt4p"]
+[ext_resource type="Script" path="res://scripts/WinDisplay.cs" id="4_7wklq"]
 [ext_resource type="Script" path="res://scripts/ProjectorPreview.cs" id="4_tqk4v"]
 [ext_resource type="Texture2D" uid="uid://5n3cr6t827i" path="res://textures/projection.png" id="5_rnm8k"]
 [ext_resource type="Texture2D" uid="uid://d4jtpgq6r33wy" path="res://textures/scanline.png" id="6_kg5yp"]
@@ -151,6 +152,12 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w1j8h"]
 radius = 0.01
 height = 0.02
+
+[sub_resource type="Curve" id="Curve_0e2xa"]
+min_value = 0.02
+max_value = 20.0
+_data = [Vector2(0.0842105, 0.02), 0.0, 0.0, 0, 0, Vector2(0.778947, 20), 0.0, 0.0, 0, 0, Vector2(1, 0.02), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1ese"]
 shading_mode = 0
@@ -373,16 +380,18 @@ text = "You win!"
 font_size = 48
 outline_size = 8
 
-[node name="WinDescription" type="Label3D" parent="Camera3D/Cockpit/WinScreenBackground"]
+[node name="WinDescription" type="Label3D" parent="Camera3D/Cockpit/WinScreenBackground" node_paths=PackedStringArray("GameState")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.111)
 modulate = Color(0.244483, 0.696795, 1, 1)
 outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
 text = "You managed to throw the
 Glorpixians off your trail!
 You managed to escape
-in ### seconds!"
+in {time} seconds!"
 font_size = 24
 outline_size = 8
+script = ExtResource("4_7wklq")
+GameState = NodePath("../../../../GameStateController")
 
 [node name="ButtonBack" type="MeshInstance3D" parent="Camera3D/Cockpit/WinScreenBackground"]
 transform = Transform3D(0.805, 0, 0, 0, 1, 8.88178e-16, 0, -3.55271e-15, 0.2, 0, 0, 0.55)
@@ -558,13 +567,15 @@ scale_amount_curve = SubResource("Curve_ldqvi")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D" node_paths=PackedStringArray("GameState")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0684242, 0, -40.5586)
-amount = 50
-lifetime = 2.0
+amount = 200
+lifetime = 0.5
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_ikhm7")
 draw_pass_1 = SubResource("CapsuleMesh_w1j8h")
 script = ExtResource("11_2jtmv")
 GameState = NodePath("../../GameStateController")
+Capsule = SubResource("CapsuleMesh_w1j8h")
+CapsuleLengthCurve = SubResource("Curve_0e2xa")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.89417, -0.236623, -0.380092, 0.067067, -0.768569, 0.636242, -0.442676, -0.5944, -0.671361, -4.7994, 2.01321, -0.739324)
@@ -576,7 +587,7 @@ mesh = SubResource("QuadMesh_sisxw")
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits")]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
 ResourceData = ExtResource("12_usoy6")
@@ -596,3 +607,7 @@ ButtonQuit = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonQuit")
 PanelMenu = NodePath("../Camera3D/Cockpit/MenuBackground")
 ButtonCreditsBack = NodePath("../Camera3D/Cockpit/CreditsBackground/ButtonBack")
 PanelCredits = NodePath("../Camera3D/Cockpit/CreditsBackground")
+ButtonLoseBack = NodePath("../Camera3D/Cockpit/LoseScreenBackground/ButtonBack")
+PanelLose = NodePath("../Camera3D/Cockpit/LoseScreenBackground")
+ButtonWinBack = NodePath("../Camera3D/Cockpit/WinScreenBackground/ButtonBack")
+PanelWin = NodePath("../Camera3D/Cockpit/WinScreenBackground")
