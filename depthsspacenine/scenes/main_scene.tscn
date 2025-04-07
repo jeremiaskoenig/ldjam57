@@ -144,13 +144,13 @@ emission_ring_radius = 5.0
 emission_ring_inner_radius = 2.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
-initial_velocity_min = 10.0
-initial_velocity_max = 74.71
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w1j8h"]
-radius = 0.125
-height = 10.0
+radius = 0.01
+height = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1ese"]
 shading_mode = 0
@@ -556,15 +556,15 @@ scale_amount_min = 0.01
 scale_amount_max = 0.02
 scale_amount_curve = SubResource("Curve_ldqvi")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0684242, 0, -8.55856)
-visible = false
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D" node_paths=PackedStringArray("GameState")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0684242, 0, -40.5586)
 amount = 50
 lifetime = 2.0
 draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_ikhm7")
 draw_pass_1 = SubResource("CapsuleMesh_w1j8h")
 script = ExtResource("11_2jtmv")
+GameState = NodePath("../../GameStateController")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.89417, -0.236623, -0.380092, 0.067067, -0.768569, 0.636242, -0.442676, -0.5944, -0.671361, -4.7994, 2.01321, -0.739324)
@@ -576,7 +576,7 @@ mesh = SubResource("QuadMesh_sisxw")
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin")]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
 ResourceData = ExtResource("12_usoy6")
@@ -596,7 +596,3 @@ ButtonQuit = NodePath("../Camera3D/Cockpit/MenuBackground/ButtonQuit")
 PanelMenu = NodePath("../Camera3D/Cockpit/MenuBackground")
 ButtonCreditsBack = NodePath("../Camera3D/Cockpit/CreditsBackground/ButtonBack")
 PanelCredits = NodePath("../Camera3D/Cockpit/CreditsBackground")
-ButtonLoseBack = NodePath("../Camera3D/Cockpit/LoseScreenBackground/ButtonBack")
-PanelLose = NodePath("../Camera3D/Cockpit/LoseScreenBackground")
-ButtonWinBack = NodePath("../Camera3D/Cockpit/WinScreenBackground/ButtonBack")
-PanelWin = NodePath("../Camera3D/Cockpit/WinScreenBackground")
