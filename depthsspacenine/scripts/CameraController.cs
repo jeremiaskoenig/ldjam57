@@ -9,6 +9,9 @@ public partial class CameraController : Camera3D
     [Export]
     public Curve WarpWobble { get; set; }
 
+    [Export]
+    public AudioController SoundController { get; set; }
+
     public float CurrentAngle => RotationDegrees.Z;
 
     public override void _Ready()
@@ -18,7 +21,7 @@ public partial class CameraController : Camera3D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (GameState.TransitionTimer > 0)
+        if (GameState.TransitionTimer > 0 || GameState.GameStage != "game")
             return;
 
         var speed = 1f;
@@ -27,12 +30,12 @@ public partial class CameraController : Camera3D
             speed *= 2;
         }
 
-        if (Input.IsKeyPressed(Key.A))
+        if (Input.IsKeyPressed(Key.D))
         {
             RotateZ(Mathf.DegToRad(-speed));
             inputCooldown = 0.5f;
         }
-        else if (Input.IsKeyPressed(Key.D))
+        else if (Input.IsKeyPressed(Key.A))
         {
             RotateZ(Mathf.DegToRad(speed));
             inputCooldown = 0.5f;
@@ -45,6 +48,9 @@ public partial class CameraController : Camera3D
 
     public override void _Process(double delta)
     {
+        if (GameState.GameStage != "game")
+            return;
+
         if (GameState.TransitionTimer > 0)
         {
             if (warpRotationStart == null)
@@ -82,9 +88,10 @@ public partial class CameraController : Camera3D
         inputCooldown -= (float)delta;
         if (inputCooldown <= 0 && GameState.IsCloseEnough(CurrentAngle))
         {
-            AudioController.Instance.PlayJumpStartup();
             GameState.TransitionTimer = 5;
-            AudioController.Instance.JumpPingPlayed = false;
+
+            SoundController.PlayJumpStartup();
+            SoundController.JumpPingPlayed = false;
         }
     }
 }

@@ -106,16 +106,22 @@ public partial class GameStateController : Node
     public PackedScene TargetCircle { get; set; }
 
     [Export]
+    public AudioController SoundController { get; set; }
+
+    [Export]
     public AudioStreamPlayer BackgroundPlayer { get; set; }
 
     public override void _Ready()
     {
         ButtonPlay.ButtonClicked += () => 
         {
+            SoundController.PlayJumpStartup();
+            SoundController.JumpPingPlayed = false;
             GameStage = "game";
             BackgroundPlayer.Play();
             DetectionProgress = 0;
             TransitionTimer = 5;
+            CurrentLevelAngle = CameraController.RotationDegrees.Z;
             TimeInCurrentRun = 0;
             CurrentLevel = 0;
             constellationQueue.Clear();
@@ -186,10 +192,10 @@ public partial class GameStateController : Node
         if (GameStage == "game")
         {
             StarLayer.Visible = TransitionTimer > 1.9 || TransitionTimer <= 0;
-            if (TransitionTimer <= 1.9 && !AudioController.Instance.JumpPingPlayed)
+            if (TransitionTimer <= 1.9 && !SoundController.JumpPingPlayed)
             {
-                AudioController.Instance.PlayJumpPing();
-                AudioController.Instance.JumpPingPlayed = true;
+                SoundController.PlayJumpPing();
+                SoundController.JumpPingPlayed = true;
             }
             if (TransitionTimer <= 0)
             {
@@ -227,6 +233,7 @@ public partial class GameStateController : Node
             else if (DetectionProgress >= 1 && TransitionTimer <= 0)
             {
                 GameStage = "end_lose";
+                ClearView();
             }
         }
         else if (GameStage == "menu")
@@ -240,6 +247,10 @@ public partial class GameStateController : Node
         else if (GameStage == "credits")
         {
             CurrentHoverText = ButtonCreditsBack.CurrentHoverText ?? "";
+        }
+        else if (GameStage == "controls")
+        {
+            CurrentHoverText = ButtonControlsBack.CurrentHoverText ?? "";
         }
     }
 

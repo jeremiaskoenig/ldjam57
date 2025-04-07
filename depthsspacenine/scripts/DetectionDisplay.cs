@@ -29,6 +29,14 @@ public partial class DetectionDisplay : Label3D
         {
             Text = "\n    Controls";
         }
+        else if (GameState.GameStage == "end_lose")
+        {
+            Text = "Glorpixian boarding party\nat airlock";
+        }
+        else if (GameState.GameStage == "end_win")
+        {
+            Text = "No Glorpixians scanners\nfound in range";
+        }
     }
 
     private void UpdateText()

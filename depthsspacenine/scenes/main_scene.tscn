@@ -293,11 +293,12 @@ albedo_color = Color(1, 0.501961, 0.12549, 0.12549)
 
 [node name="MainScene" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("GameState")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("GameState", "SoundController")]
 fov = 37.5
 script = ExtResource("1_qbsww")
 GameState = NodePath("../GameStateController")
 WarpWobble = SubResource("Curve_sm8it")
+SoundController = NodePath("../SoundController")
 
 [node name="Cockpit" type="MeshInstance3D" parent="Camera3D"]
 mesh = ExtResource("1_asbjk")
@@ -524,7 +525,7 @@ modulate = Color(0.244483, 0.696795, 1, 1)
 outline_modulate = Color(0.000830352, 0.0626957, 0.370249, 1)
 text = "You managed to throw the
 Glorpixians off your trail!
-You managed to escape
+You escaped them
 in {time} seconds!"
 font_size = 24
 outline_size = 8
@@ -825,7 +826,7 @@ mesh = SubResource("QuadMesh_sisxw")
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonControls", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin", "ButtonControlsBack", "PanelControls", "BackgroundPlayer")]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonControls", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin", "ButtonControlsBack", "PanelControls", "SoundController", "BackgroundPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
 ResourceData = SubResource("JSON_nfh48")
@@ -852,10 +853,12 @@ ButtonWinBack = NodePath("../Camera3D/Cockpit/WinScreenBackground/ButtonBack")
 PanelWin = NodePath("../Camera3D/Cockpit/WinScreenBackground")
 ButtonControlsBack = NodePath("../Camera3D/Cockpit/ControlsBackground/ButtonBack")
 PanelControls = NodePath("../Camera3D/Cockpit/ControlsBackground")
+ConstellationCount = 2
 TargetCircle = ExtResource("51_41am2")
+SoundController = NodePath("../SoundController")
 BackgroundPlayer = NodePath("../BackgroundAudioPlayer")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("GameState")]
+[node name="SoundController" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("GameState")]
 script = ExtResource("81_m5n22")
 Alarm = ExtResource("82_f8rvq")
 JumpStartup = ExtResource("82_qqt7d")

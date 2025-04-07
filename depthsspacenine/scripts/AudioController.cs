@@ -43,7 +43,7 @@ public partial class AudioController : AudioStreamPlayer
     public GameStateController GameState { get; set; }
 
     public static AudioController Instance;
-    public bool JumpPingPlayed = true;
+    public bool JumpPingPlayed { get; set; } 
 
     public override void _Ready()
     {

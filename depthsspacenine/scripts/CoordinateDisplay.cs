@@ -18,13 +18,17 @@ public partial class CoordinateDisplay : Label3D
                 offset = 0;
             }
         }
-        else if (GameState.GameStage == "menu")
+        else if (GameState.GameStage == "menu" || GameState.GameStage == "credits" || GameState.GameStage == "controls")
         {
             Text = "\n    " + GameState.CurrentHoverText;
         }
-        else if (GameState.GameStage == "credits")
+        else if (GameState.GameStage == "end_lose")
         {
-            Text = "\n    " + GameState.CurrentHoverText;
+            Text = "Warp targeting jammed!";
+        }
+        else if (GameState.GameStage == "end_win")
+        {
+            Text = "Secure system reached\n\nWarp system shutting down";
         }
     }
 

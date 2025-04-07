@@ -15,7 +15,7 @@ public partial class LevelProgressDisplay : Label3D
 
     public override void _Process(double delta)
     {
-        Visible = GameState.CurrentLevel > 0;
+        Visible = GameState.CurrentLevel > 0 && GameState.GameStage == "game";
         Text = initialText.Replace("{now}", GameState.CurrentLevel.ToString())
                           .Replace("{max}", GameState.LevelCount.ToString());
     }
