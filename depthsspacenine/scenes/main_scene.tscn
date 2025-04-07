@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://ltnwbxoa6atn"]
+[gd_scene load_steps=120 format=3 uid="uid://ltnwbxoa6atn"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqmo6vqo1y6li" path="res://meshes/cockpit.obj" id="1_asbjk"]
 [ext_resource type="Script" path="res://scripts/CameraController.cs" id="1_qbsww"]
@@ -80,6 +80,13 @@
 [ext_resource type="JSON" path="res://constellations/Wolf.json" id="71_j4fvq"]
 [ext_resource type="JSON" path="res://constellations/Zentaur.json" id="72_2ng25"]
 [ext_resource type="JSON" path="res://constellations/Zwillinge.json" id="73_clw3e"]
+[ext_resource type="Script" path="res://scripts/AudioController.cs" id="81_m5n22"]
+[ext_resource type="AudioStream" uid="uid://c2u1o2sbh3m2j" path="res://sounds/alarm.wav" id="82_f8rvq"]
+[ext_resource type="AudioStream" uid="uid://cl8ur7s0b8d6m" path="res://sounds/jump_startup.wav" id="82_qqt7d"]
+[ext_resource type="AudioStream" uid="uid://cypo6qgc05hsf" path="res://sounds/jump_ping.wav" id="83_nnq7r"]
+[ext_resource type="AudioStream" uid="uid://w4pmsbkp0fp8" path="res://sounds/scan.wav" id="85_damao"]
+[ext_resource type="AudioStream" uid="uid://2v0y4yig1bk6" path="res://sounds/Antriebsbrennen.wav" id="86_vf1rc"]
+[ext_resource type="Script" path="res://scripts/AudioLoop.cs" id="87_l7i6v"]
 
 [sub_resource type="Curve" id="Curve_sm8it"]
 min_value = 0.25
@@ -818,7 +825,7 @@ mesh = SubResource("QuadMesh_sisxw")
 [node name="StarLayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
-[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonControls", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin", "ButtonControlsBack", "PanelControls")]
+[node name="GameStateController" type="Node3D" parent="." node_paths=PackedStringArray("StarLayer", "TargetLayer", "ButtonPlay", "ButtonCredits", "ButtonControls", "ButtonQuit", "PanelMenu", "ButtonCreditsBack", "PanelCredits", "ButtonLoseBack", "PanelLose", "ButtonWinBack", "PanelWin", "ButtonControlsBack", "PanelControls", "BackgroundPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0522268, -0.0292943, -0.031997)
 script = ExtResource("10_lhk55")
 ResourceData = SubResource("JSON_nfh48")
@@ -846,3 +853,18 @@ PanelWin = NodePath("../Camera3D/Cockpit/WinScreenBackground")
 ButtonControlsBack = NodePath("../Camera3D/Cockpit/ControlsBackground/ButtonBack")
 PanelControls = NodePath("../Camera3D/Cockpit/ControlsBackground")
 TargetCircle = ExtResource("51_41am2")
+BackgroundPlayer = NodePath("../BackgroundAudioPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("GameState")]
+script = ExtResource("81_m5n22")
+Alarm = ExtResource("82_f8rvq")
+JumpStartup = ExtResource("82_qqt7d")
+JumpPing = ExtResource("83_nnq7r")
+Scan = ExtResource("85_damao")
+GameState = NodePath("../GameStateController")
+
+[node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("GameState")]
+stream = ExtResource("86_vf1rc")
+volume_db = -15.0
+script = ExtResource("87_l7i6v")
+GameState = NodePath("../GameStateController")

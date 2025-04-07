@@ -38,7 +38,7 @@ public partial class GameStateController : Node
     [Export]
     public float AngleTolerance { get; set; }
 
-    public float CurrentLevelAngle { get; set; }
+    public float CurrentLevelAngle { get; set; } = 180;
 
     public float TransitionTimer { get; set; }
     public bool RequireNewMap => CurrentConstellation == null && TransitionTimer <= 0;
@@ -100,12 +100,20 @@ public partial class GameStateController : Node
     public bool ShuffleConstellations { get; set; } = true;
 
     [Export]
+    public int ConstellationCount { get; set; } = 40;
+
+    [Export]
     public PackedScene TargetCircle { get; set; }
+
+    [Export]
+    public AudioStreamPlayer BackgroundPlayer { get; set; }
+
     public override void _Ready()
     {
         ButtonPlay.ButtonClicked += () => 
         {
             GameStage = "game";
+            BackgroundPlayer.Play();
             DetectionProgress = 0;
             TransitionTimer = 5;
             TimeInCurrentRun = 0;
@@ -132,7 +140,10 @@ public partial class GameStateController : Node
                     constellationList[n] = value;  
                 }  
             }
-            constellationList.ForEach(constellation => constellationQueue.Enqueue(constellation));
+            foreach (var constellation in constellationList.Take(ConstellationCount))
+            {
+                constellationQueue.Enqueue(constellation);
+            }
 
             LevelCount = constellationQueue.Count;
         };
@@ -167,11 +178,24 @@ public partial class GameStateController : Node
         PanelLose.Visible = GameStage == "end_lose";
         PanelWin.Visible = GameStage == "end_win";
 
+        if (GameStage != "game" && BackgroundPlayer.Playing)
+        {
+            BackgroundPlayer.Stop();
+        }
+
         if (GameStage == "game")
         {
             StarLayer.Visible = TransitionTimer > 1.9 || TransitionTimer <= 0;
-            DetectionProgress += (float)(delta * 0.1f);
-            TimeInCurrentRun += (float)delta;
+            if (TransitionTimer <= 1.9 && !AudioController.Instance.JumpPingPlayed)
+            {
+                AudioController.Instance.PlayJumpPing();
+                AudioController.Instance.JumpPingPlayed = true;
+            }
+            if (TransitionTimer <= 0)
+            {
+                DetectionProgress += (float)(delta * 0.1f);
+                TimeInCurrentRun += (float)delta;
+            }
             if (TransitionTimer > 0)
             {
                 TargetLayer.Visible = TransitionTimer > 2;

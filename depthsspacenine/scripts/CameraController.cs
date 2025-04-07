@@ -27,12 +27,12 @@ public partial class CameraController : Camera3D
             speed *= 2;
         }
 
-        if (Input.IsKeyPressed(Key.Q))
+        if (Input.IsKeyPressed(Key.A))
         {
             RotateZ(Mathf.DegToRad(-speed));
             inputCooldown = 0.5f;
         }
-        else if (Input.IsKeyPressed(Key.E))
+        else if (Input.IsKeyPressed(Key.D))
         {
             RotateZ(Mathf.DegToRad(speed));
             inputCooldown = 0.5f;
@@ -82,7 +82,9 @@ public partial class CameraController : Camera3D
         inputCooldown -= (float)delta;
         if (inputCooldown <= 0 && GameState.IsCloseEnough(CurrentAngle))
         {
+            AudioController.Instance.PlayJumpStartup();
             GameState.TransitionTimer = 5;
+            AudioController.Instance.JumpPingPlayed = false;
         }
     }
 }
